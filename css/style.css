@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 @keyframes scaleImage {
   from {
     transform: translate(-50%, -50%) scale(1);
@@ -38,44 +44,42 @@ body {
   background-color: #f1f1f1;
   opacity: 0.8;
 }
-#menu a#logo {
+#menu > a {
   display: block;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: 25%;
 }
-#menu a#logo img {
+#menu > a > img {
   display: block;
   transition-duration: 200ms;
 }
-#menu a#logo:hover > img {
+#menu > a:hover > img {
   transform: scale(1.1);
 }
-#menu ul {
+#menu > ul {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
 }
-#menu ul li {
-  float: left;
-}
-#menu ul li a {
+#menu > ul > li > a {
   display: block;
   padding: 30px;
   color: #121212;
   text-decoration: none;
+  mix-blend-mode: difference;
   transition-duration: 400ms;
   font-size: 20px;
   font-weight: 500;
 }
-#menu ul li a:hover {
+#menu > ul > li > a:hover {
   transform: translateY(-10%) scale(1.1);
 }
 
 #main {
-  width: 100vw;
   height: 100vh;
   margin: 0 auto;
   position: relative;
@@ -155,6 +159,34 @@ body {
   height: 1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+}
+
+#logoTitle {
+  position: relative;
+  height: 100vh;
+  background-color: #121212;
+}
+#logoTitle > span {
+  position: absolute;
+  color: #f1f1f1;
+  font-size: 150px;
+  font-weight: 900;
+  font-family: "GmarketSans", sans-serif;
+}
+#logoTitle > span:nth-child(1) {
+  top: 25%;
+  left: 25%;
+}
+#logoTitle > span:nth-child(3) {
+  top: 58%;
+  left: 50%;
+}
+#logoTitle > img {
+  width: 500px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /*# sourceMappingURL=style.css.map */
