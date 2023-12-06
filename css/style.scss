@@ -1,5 +1,6 @@
 $white: #f1f1f1;
 $black: #121212;
+$Gmarket : "GmarketSans", sans-serif;
 
 // G마켓 산스 폰트 적용
 @font-face {
@@ -98,8 +99,6 @@ body {
         display: flex;
 
         > li {
-            // float:left;
-
             > a {
                 display:block;
                 padding: 30px; 
@@ -210,19 +209,23 @@ body {
         }
     }
 }
-#logoTitle {
+#secondPage{
     position: relative;
     height: 100vh;
     background: {
         color: $black;
     }
-    > span{
+
+    & > .logoTitle {
+        display:none;
+    }
+    > h2{
         position: absolute;
         color: $white;
         font: {
             size: 150px;
             weight: 900;
-            family: "GmarketSans", sans-serif;
+            family: $Gmarket
         }
         &:nth-child(1) {
             top: 25%;
@@ -237,5 +240,119 @@ body {
         width: 500px;
         position: absolute;
         @include transform-center;
+    }
+}
+#logoWhitePage {
+    transition-duration: 400ms;
+    position: absolute;
+    left: 0%;
+    left: -100%;
+    width: 70vw;
+    height: 100vh;
+    background: {
+        color: $white;
+        image: url("../img/logoBackgroundNumber1.png");
+        repeat: no-repeat;
+        position: 45% 95%;
+    }
+
+    > img{
+        width: 400px;
+        position:absolute;
+        @include transform-center-Y;
+        right: -20%;
+        // opacity: 0;
+    }
+    > img#eightBall {
+        width: 200px;
+        right: -11%;
+    }
+
+    & > div.logoDetail:nth-of-type(1),
+    & > div.logoDetail:nth-of-type(2),
+    & > img:nth-of-type(1),
+    & > img:nth-of-type(2){
+        display: none;
+    }
+}
+.logoDetail {
+    font-family: $Gmarket;
+    position: absolute;
+    @include transform-center-Y;
+    right: 23%;
+
+    > h2{
+        font: {
+            weight: 900;
+            size: 60px; 
+        }
+        margin-bottom: 50px; 
+    }
+
+    > div{
+        display: flex;
+        justify-content: space-between;
+        width: 600px;
+    }
+
+    .logoTextLeft{
+        flex-basis: 200px;
+        justify-content: space-between;
+        display: flex;
+        > span {
+            position: relative;
+            font: {
+                size: 22px; 
+                weight: 400;
+            }
+        }
+
+        > span:nth-child(1)::after{
+            content: "";
+            position: absolute;
+            height: 2px; 
+            width: 100px; 
+            background-color: $black;
+            left: 33px; 
+            top: 8px; 
+        }
+        
+        > span:nth-child(2){
+            margin-right: 30px; 
+        }
+    }
+
+    .logoTextRight {
+        flex-grow: 1;
+        > p {
+            font: {
+                size: 23px; 
+            }
+            line-height: 1.3;
+            margin-bottom: 20px; 
+        }
+
+        > a {
+            display: block;
+            transition-duration: 400ms;
+            padding: 10px 20px 10px 0; 
+            text-decoration: none;
+            color: $black;
+            font: {
+                size: 20px;
+                weight: bold;
+            }
+            background: {
+                image: url("../img/detailarrowHead.png");
+                repeat: no-repeat;
+                position: 120px center;
+            }
+
+            &:hover {
+                background: {
+                    position: 150px center;
+                }
+            }
+        }
     }
 }
