@@ -196,7 +196,6 @@ body {
   transition-duration: 400ms;
   position: absolute;
   left: 0%;
-  left: -100%;
   width: 70vw;
   height: 100vh;
   background-color: #f1f1f1;
@@ -215,8 +214,11 @@ body {
   width: 200px;
   right: -11%;
 }
-#logoWhitePage > div.logoDetail:nth-of-type(1), #logoWhitePage > div.logoDetail:nth-of-type(2), #logoWhitePage > img:nth-of-type(1), #logoWhitePage > img:nth-of-type(2) {
+#logoWhitePage > div.logoDetail, #logoWhitePage > img {
   display: none;
+}
+#logoWhitePage > div.logoDetail.on, #logoWhitePage > .on {
+  display: block;
 }
 
 .logoDetail {
