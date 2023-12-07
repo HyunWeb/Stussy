@@ -1,9 +1,57 @@
-@font-face {
-  font-family: "GmarketSansMedium";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 @keyframes scaleImage {
   from {
     transform: translate(-50%, -50%) scale(1);
@@ -29,9 +77,64 @@
     opacity: 0;
   }
 }
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
-  background-color: #f1f1f1;
   font-family: "Noto Sans KR", sans-serif;
+}
+
+#menuList > li > a {
+  color: #121212;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#overlaySlogan > p {
+  color: #f1f1f1;
+  text-align: center;
+  line-height: 1.3;
+  font-size: 50px;
+  font-weight: bold;
+}
+#overlaySlogan > p > span {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+#secondPage > h2 {
+  color: #f1f1f1;
+  font-size: 150px;
+  font-weight: 900;
+  font-family: "GmarketSans", sans-serif;
+}
+
+.logoDetail {
+  font-family: "GmarketSans", sans-serif;
+}
+.logoDetail > h2 {
+  font-weight: 900;
+  font-size: 60px;
+}
+
+.logoTextLeft > span {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.logoTextRight > p {
+  font-size: 23px;
+  line-height: 1.3;
+}
+.logoTextRight > a {
+  text-decoration: none;
+  color: #121212;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #menu {
@@ -58,25 +161,25 @@ body {
 #menu > a:hover > img {
   transform: scale(1.1);
 }
-#menu > ul {
+
+#menuList {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   display: flex;
 }
-#menu > ul > li > a {
+#menuList > li > a {
   display: block;
   padding: 30px;
-  color: #121212;
-  text-decoration: none;
-  mix-blend-mode: difference;
   transition-duration: 400ms;
-  font-size: 20px;
-  font-weight: 500;
 }
-#menu > ul > li > a:hover {
+#menuList > li > a:hover {
   transform: translateY(-10%) scale(1.1);
+}
+
+body {
+  background-color: #f1f1f1;
 }
 
 #main {
@@ -126,15 +229,6 @@ body {
   left: 50%;
   transform: translateX(-50%);
   top: 42%;
-  color: #f1f1f1;
-  text-align: center;
-  line-height: 1.3;
-  font-size: 50px;
-  font-weight: bold;
-}
-#overlaySlogan > p > span {
-  font-size: 25px;
-  font-weight: 400;
 }
 #overlaySlogan > button {
   width: 87px;
@@ -171,10 +265,6 @@ body {
 }
 #secondPage > h2 {
   position: absolute;
-  color: #f1f1f1;
-  font-size: 150px;
-  font-weight: 900;
-  font-family: "GmarketSans", sans-serif;
 }
 #secondPage > h2:nth-child(1) {
   top: 25%;
@@ -222,15 +312,12 @@ body {
 }
 
 .logoDetail {
-  font-family: "GmarketSans", sans-serif;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: 23%;
 }
 .logoDetail > h2 {
-  font-weight: 900;
-  font-size: 60px;
   margin-bottom: 50px;
 }
 .logoDetail > div {
@@ -245,8 +332,6 @@ body {
 }
 .logoDetail .logoTextLeft > span {
   position: relative;
-  font-size: 22px;
-  font-weight: 400;
 }
 .logoDetail .logoTextLeft > span:nth-child(1)::after {
   content: "";
@@ -264,18 +349,12 @@ body {
   flex-grow: 1;
 }
 .logoDetail .logoTextRight > p {
-  font-size: 23px;
-  line-height: 1.3;
   margin-bottom: 20px;
 }
 .logoDetail .logoTextRight > a {
   display: block;
   transition-duration: 400ms;
   padding: 10px 20px 10px 0;
-  text-decoration: none;
-  color: #121212;
-  font-size: 20px;
-  font-weight: bold;
   background-image: url("../img/detailarrowHead.png");
   background-repeat: no-repeat;
   background-position: 120px center;
