@@ -1,0 +1,79 @@
+body {
+    background-color: $white;
+}
+
+#main {
+    height: 100vh;
+    margin: 0 auto; 
+    position:relative;  
+    overflow: hidden;
+    background: {
+        image: url("../img/streetView.png");
+        repeat: no-repeat;
+        size: cover;
+        position: center;
+    }
+
+    > img:nth-child(1){
+        opacity:0;
+        width: 100%;
+        // animation: scaleImage 1s linear 1;
+        position: absolute;
+        @include transform-center;
+    }
+
+    > img:nth-child(2){
+        opacity: 0;
+        // animation: scaleImage2 1s linear 1;
+        position: absolute;
+        left: 50%;
+        top: 52%;
+        transform: translate(-50%, -50%);
+        width: 45%;
+    }
+}
+
+#overlaySlogan{
+    position:absolute;
+    top: 0; 
+    left: 0;
+    bottom: 0; 
+    right: 0; 
+    background: {
+        color: #000000ad;
+    }
+
+    > img {
+        width: 633px;
+        position: absolute;
+        @include transform-center-X;
+        top: 35%;
+    }
+    
+    > p {
+        position: absolute;
+        @include transform-center-X;
+        top: 42%;
+    }
+
+    > button {
+        width: 87px; height: 87px; 
+        outline: none;
+        border: none;
+        cursor: pointer;
+        background: {
+            color: transparent;
+            image: url("../img/downButton.png");
+            repeat: no-repeat;
+            size: 87px;
+            position: 48% 90%;
+        }
+        position: absolute;
+        @include transform-center-X;
+        bottom: 10%;
+        
+        > span{
+            @include buttonSpanClip;
+        }
+    }
+}

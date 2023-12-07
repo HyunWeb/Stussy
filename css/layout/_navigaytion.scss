@@ -1,0 +1,42 @@
+#menu {
+    position:fixed;
+    z-index: 90;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    height: 90px;
+    background-color: $white;
+    opacity: 0.8;
+
+    > a{
+        display: block;
+        position:absolute;
+        @include transform-center-Y;
+        left: 25%;
+        
+
+        > img {
+            display:block;
+            transition-duration: 200ms;
+        }
+
+        &:hover > img{transform: scale(1.1);}
+    }
+}
+
+#menuList {
+    position: absolute;
+    @include transform-center;
+    display: flex;
+
+    > li {
+        > a {
+            display:block;
+            padding: 30px; 
+            transition-duration: 400ms;
+            &:hover {
+                transform: translateY(-10%) scale(1.1);
+            }
+        }
+    }
+} 

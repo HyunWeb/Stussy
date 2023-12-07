@@ -1,0 +1,126 @@
+#secondPage{
+    position: relative;
+    height: 100vh;
+    background: {
+        color: $black;
+    }
+
+    & > .logoTitle {
+        display:none;
+    }
+    > h2{
+        position: absolute;
+        &:nth-child(1) {
+            top: 25%;
+            left: 25%;
+        }
+        &:nth-child(3) {
+            top: 58%;
+            left: 50%;
+        }
+    }
+    > img {
+        width: 500px;
+        position: absolute;
+        @include transform-center;
+    }
+}
+
+#logoWhitePage {
+    transition-duration: 400ms;
+    position: absolute;
+    left: 0%;
+    // left: -100%;
+    width: 70vw;
+    height: 100vh;
+    background: {
+        color: $white;
+        image: url("../img/logoBackgroundNumber1.png");
+        repeat: no-repeat;
+        position: 45% 95%;
+    }
+
+    > img{
+        width: 400px;
+        position:absolute;
+        @include transform-center-Y;
+        right: -20%;
+        // opacity: 0;
+    }
+    > img#eightBall {
+        width: 200px;
+        right: -11%;
+    }
+
+    & > div.logoDetail,
+    & > img{
+        display: none;
+    }
+    & > div.logoDetail.on,
+    & > .on{
+        display: block;
+    }
+}
+
+.logoDetail {
+    position: absolute;
+    @include transform-center-Y;
+    right: 23%;
+
+    > h2{
+        margin-bottom: 50px; 
+    }
+
+    > div{
+        display: flex;
+        justify-content: space-between;
+        width: 600px;
+    }
+
+    .logoTextLeft{
+        flex-basis: 200px;
+        justify-content: space-between;
+        display: flex;
+        > span {
+            position: relative;
+        }
+
+        > span:nth-child(1)::after{
+            content: "";
+            position: absolute;
+            height: 2px; 
+            width: 100px; 
+            background-color: $black;
+            left: 33px; 
+            top: 8px; 
+        }
+        
+        > span:nth-child(2){
+            margin-right: 30px; 
+        }
+    }
+
+    .logoTextRight {
+        flex-grow: 1;
+        > p {
+            margin-bottom: 20px; 
+        }
+
+        > a {
+            display: block;
+            transition-duration: 400ms;
+            padding: 10px 20px 10px 0; 
+            background: {
+                image: url("../img/detailarrowHead.png");
+                repeat: no-repeat;
+                position: 120px center;
+            }
+
+            &:hover {
+                background: {
+                    position: 150px center;
+                }
+            }
+        }
+    }
+}
