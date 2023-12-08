@@ -89,3 +89,30 @@ body {
     }
 }
 
+#styleTitle > h2 {
+    color: $white;
+    text-align: center;
+ font: {
+    size: 70px;
+    weight: 900;
+ }   
+}
+
+#sensualDesignTypo {
+    & > h3 {
+        color: $black;
+        font: {
+            size: 50px;
+            weight: bold;
+        }
+    }
+
+    & > p {
+        font: {
+            size: 20px; 
+            weight: 400;
+
+        }
+    }
+}
+

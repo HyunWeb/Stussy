@@ -1,0 +1,41 @@
+#main {
+    background: {
+        image: url("../img/streetView.png");
+        repeat: no-repeat;
+        size: cover;
+        position: center;
+    }
+
+    > img:nth-child(1){
+        opacity:0;
+        width: 100%;
+        // animation: scaleImage 1s linear 1;
+        position: absolute;
+        @include transform-center;
+    }
+
+    > img:nth-child(2){
+        opacity: 0;
+        // animation: scaleImage2 1s linear 1;
+        position: absolute;
+        left: 50%;
+        top: 52%;
+        transform: translate(-50%, -50%);
+        width: 45%;
+    }
+}
+
+#overlaySlogan{
+    > img {
+        width: 633px;
+        position: absolute;
+        @include transform-center-X;
+        top: 35%;
+    }
+    
+    > p {
+        position: absolute;
+        @include transform-center-X;
+        top: 42%;
+    }
+}

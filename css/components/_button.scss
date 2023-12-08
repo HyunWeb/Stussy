@@ -1,0 +1,22 @@
+#overlaySlogan{
+    > button {
+        width: 87px; height: 87px; 
+        outline: none;
+        border: none;
+        cursor: pointer;
+        background: {
+            color: transparent;
+            image: url("../img/downButton.png");
+            repeat: no-repeat;
+            size: 87px;
+            position: 48% 90%;
+        }
+        position: absolute;
+        @include transform-center-X;
+        bottom: 10%;
+        
+        > span{
+            @include buttonSpanClip;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+#secondPage{
+    & > .logoTitle {
+        display:none;
+    }
+
+    > h2{
+        position: absolute;
+        &:nth-child(1) {
+            top: 25%;
+            left: 25%;
+        }
+        &:nth-child(3) {
+            top: 58%;
+            left: 50%;
+        }
+    }
+
+    > img {
+        width: 500px;
+        position: absolute;
+        @include transform-center;
+    }
+}
+

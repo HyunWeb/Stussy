@@ -26,3 +26,15 @@
         opacity:0;
     }
 }
+
+@keyframes textShrink{
+    from{
+        transform:  scale(314);
+        transform-origin: 36%;
+    }
+
+    to{
+        transform:  scale(1);
+        transform-origin: 36%;
+    }
+}
