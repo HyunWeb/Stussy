@@ -8,6 +8,21 @@ $Gmarket : "GmarketSans", sans-serif;
     font-style: normal;
 }
 
+.h3Title {
+    color: $black;
+    font: {
+        size: 50px;
+        weight: 900;
+    }
+}
+
+.paragraph {
+    font: {
+        size: 20px; 
+        weight: 400;
+    }
+}
+
 body {
     font-family:'Noto Sans KR', sans-serif;
 }
@@ -100,19 +115,24 @@ body {
 
 #sensualDesignTypo {
     & > h3 {
-        color: $black;
-        font: {
-            size: 50px;
-            weight: 900;
-        }
+        @extend .h3Title;
+    }
+
+    & > p{
+      @extend .paragraph;
+    }
+}
+
+#wideStylePage{
+    & > h3 {
+        @extend .h3Title;
     }
 
     & > p {
-        font: {
-            size: 20px; 
-            weight: 400;
-
-        }
+        @extend .paragraph;
     }
 }
+
+
+
 
