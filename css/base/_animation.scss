@@ -38,3 +38,13 @@
         transform-origin: 36%;
     }
 }
+
+@keyframes imgShrink{
+    from{
+        width: 380px; 
+    }
+
+    to{
+        width: $shrinkImgWidth;
+    }
+}

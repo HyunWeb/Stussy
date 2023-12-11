@@ -44,7 +44,7 @@
 
 #sensualDesign {
     display: flex;
-    flex-direction: row;
+    flex-direction: row;    
     position: absolute;
     @include transform-center;
 }

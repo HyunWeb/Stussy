@@ -7,16 +7,16 @@
     }
 
     > img:nth-child(1){
-        opacity:0;
+        // opacity:0;
         width: 100%;
-        // animation: scaleImage 1s linear 1;
+        animation: scaleImage 1s linear 1;
         position: absolute;
         @include transform-center;
     }
 
     > img:nth-child(2){
-        opacity: 0;
-        // animation: scaleImage2 1s linear 1;
+        // opacity: 0;
+        animation: scaleImage2 1s linear 1;
         position: absolute;
         left: 50%;
         top: 52%;
