@@ -173,6 +173,21 @@ body {
   font-weight: 900;
 }
 
+#seasonsLookBook > ul > li > a {
+  text-decoration: none;
+  text-align: center;
+  color: #d63600;
+  font-size: 140px;
+  font-weight: 900;
+}
+#seasonsLookBook > ul > li > a > strong {
+  mix-blend-mode: difference;
+  transition-duration: 300ms;
+}
+#seasonsLookBook > ul > li > a:hover > strong {
+  transform: translate(-50%, -65%) scale(1.1);
+}
+
 #overlaySlogan > button {
   width: 87px;
   height: 87px;
@@ -312,7 +327,7 @@ body {
 #lookBookPage {
   background-image: url("../img/wideStyleBackground.png");
   background-repeat: no-repeat;
-  background-position: 29%;
+  background-position: 35%;
   background-size: auto 82%;
 }
 #lookBookPage > div {
@@ -513,6 +528,72 @@ body {
   flex-basis: 160px;
   display: flex;
   align-items: center;
+}
+
+#seasonsLookBook {
+  overflow: hidden;
+}
+#seasonsLookBook > ul {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  width: 132%;
+  justify-content: space-around;
+}
+#seasonsLookBook > ul > li.on > a {
+  transform: scale(1.1);
+}
+#seasonsLookBook > ul > li.on > a > strong {
+  display: block;
+}
+#seasonsLookBook > ul > li > a {
+  display: block;
+  position: relative;
+}
+#seasonsLookBook > ul > li > a > img {
+  width: 400px;
+}
+#seasonsLookBook > ul > li > a > strong {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+#seasonsLookBook > button {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition-duration: 200ms;
+  border-radius: 50%;
+  outline: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  cursor: pointer;
+}
+#seasonsLookBook > button:nth-of-type(1) {
+  background-image: url("../img/LeftButton.png");
+  left: 23%;
+}
+#seasonsLookBook > button:nth-of-type(2) {
+  background-image: url("../img/rightButton.png");
+  right: 19%;
+}
+#seasonsLookBook > button:hover {
+  background-color: rgba(0, 0, 0, 0.6117647059);
+}
+#seasonsLookBook > button > span {
+  position: absolute;
+  display: block;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 }
 
 /*# sourceMappingURL=style.css.map */

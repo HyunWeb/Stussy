@@ -1,0 +1,69 @@
+#seasonsLookBook{
+    overflow: hidden;
+    > ul {
+        position: relative;
+        @include transform-center-Y;
+        display:flex;
+        width: 132%;
+        justify-content: space-around;
+        
+        > li {
+            
+            &.on > a {
+                transform:scale(1.1);
+                > strong {
+                    display: block;
+                }
+            }
+
+            > a {
+                // overflow:hidden;
+                display: block;
+                position: relative;
+                > img {
+                    width: 400px;
+
+                }
+                > strong {
+                    position: absolute;
+                    @include transform-center;
+                    display: none;
+                }
+            }
+        } 
+    }
+    > button {
+        width: 100px; 
+        height: 100px;
+        position: absolute;
+        @include transform-center-Y;
+        transition-duration: 200ms;
+        border-radius: 50%;
+
+        outline: none;
+        background: {
+            color: transparent;
+            repeat: no-repeat;
+            size: cover;
+        }
+        border: none;
+        cursor: pointer;
+
+        &:nth-of-type(1) {
+            background-image: url("../img/LeftButton.png");
+            left: 23%;
+        }
+        &:nth-of-type(2) {
+            background-image: url("../img/rightButton.png");
+            right: 19%;
+        }
+
+        &:hover {
+            background-color: #0000009c
+        }
+
+        > span{
+            @include buttonSpanClip;
+        }
+    }
+}

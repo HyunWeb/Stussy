@@ -133,6 +133,25 @@ body {
     }
 }
 
+#seasonsLookBook > ul > li { 
+     > a {
+        text-decoration: none;
+        text-align: center;
+        color: #d63600;
+        font: {
+            size: 140px; 
+            weight: 900;
+        }
+        > strong {
+            mix-blend-mode: difference;
+            transition-duration: 300ms;
+        }
+    }
+    & > a:hover > strong {
+        transform: translate(-50%, -65%) scale(1.1);
+    }
+}
+
 
 
 
