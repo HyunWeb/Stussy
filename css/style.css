@@ -562,30 +562,31 @@ body {
   display: none;
 }
 #seasonsLookBook > button {
-  width: 100px;
-  height: 100px;
+  width: 27%;
+  height: 100%;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   transition-duration: 200ms;
-  border-radius: 50%;
   outline: none;
   background-color: transparent;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100px;
   border: none;
   cursor: pointer;
 }
 #seasonsLookBook > button:nth-of-type(1) {
   background-image: url("../img/LeftButton.png");
-  left: 23%;
+  background-position: right center;
+  left: 0;
 }
 #seasonsLookBook > button:nth-of-type(2) {
   background-image: url("../img/rightButton.png");
-  right: 19%;
+  background-position: left center;
+  right: 0;
 }
 #seasonsLookBook > button:hover {
-  background-color: rgba(0, 0, 0, 0.6117647059);
+  background-size: 110px;
 }
 #seasonsLookBook > button > span {
   position: absolute;
