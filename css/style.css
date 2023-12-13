@@ -95,6 +95,31 @@ table {
     width: 210px;
   }
 }
+@keyframes collaboScale {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(15);
+    opacity: 0;
+  }
+}
+@keyframes collaboScaleOverlay {
+  from {
+    background-color: rgba(0, 0, 0, 0.4901960784);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.4901960784);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
 @font-face {
   font-family: "GmarketSansMedium";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
@@ -358,6 +383,35 @@ body {
 }
 #wideStylePage > p {
   line-height: 1.3;
+}
+
+#collaboPage {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  background-image: url("../img/collaboImg10.png"), url("../img/collaboImg9.png"), url("../img/collaboImg8.png"), url("../img/collaboImg7.png"), url("../img/collaboImg6.png"), url("../img/collaboImg5.png"), url("../img/collaboImg4.png"), url("../img/collaboImg3.png"), url("../img/collaboImg2.png"), url("../img/collaboImg1.png");
+  background-repeat: no-repeat;
+  background-size: 200px, 200px, 200px, 300px, 350px, 430px, 400px, 500px, 1000px, cover;
+  background-position: 20% 20%, 80% 90%, 23% 65%, 62% 89%, center, 34% 0%, 85% 62%, 75% 25%, 30% 90%, center;
+}
+#collaboPage > img {
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: 50% 48%;
+  animation: collaboScale 2s ease 1;
+  opacity: 0;
+}
+#collaboPage::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  animation: collaboScaleOverlay 2s linear 1;
 }
 
 #main {
