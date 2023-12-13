@@ -80,3 +80,13 @@
         background-color: #00000000;
     }
 }
+
+@keyframes pageChangeEffect{
+    from {
+        left: 100%;
+    }
+
+    to{
+        left: 0%;
+    }
+}

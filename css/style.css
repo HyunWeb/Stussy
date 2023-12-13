@@ -120,6 +120,14 @@ table {
     background-color: rgba(0, 0, 0, 0);
   }
 }
+@keyframes pageChangeEffect {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0%;
+  }
+}
 @font-face {
   font-family: "GmarketSansMedium";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
@@ -417,7 +425,7 @@ body {
 }
 #collaboPage > div:first-of-type {
   transition-duration: 400ms;
-  z-index: 5;
+  z-index: 1;
   position: absolute;
   top: 0%;
   left: 0;
@@ -702,6 +710,26 @@ body {
   height: 1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+}
+
+.changePage {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #121212;
+  z-index: 2;
+  left: 100%;
+  animation: pageChangeEffect 1000ms ease 1;
+}
+
+#collaboBrandPage {
+  position: absolute;
+  z-index: 3;
+  left: 100%;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f1f1f1;
+  animation: pageChangeEffect 900ms 0.2s ease 1;
 }
 
 /*# sourceMappingURL=style.css.map */
