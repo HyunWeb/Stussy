@@ -14,6 +14,7 @@ $Gmarket : "GmarketSans", sans-serif;
         size: 50px;
         weight: 900;
     }
+    line-height: 1.2
 }
 
 .paragraph {
@@ -21,6 +22,7 @@ $Gmarket : "GmarketSans", sans-serif;
         size: 20px; 
         weight: 400;
     }
+    line-height: 1.5;
 }
 
 body {
@@ -152,6 +154,25 @@ body {
     }
 }
 
+#collaboPage{
+    > div:first-of-type {
+        > h3 {
+            @extend .h3Title;
+        }
+    
+        > p {
+            @extend .paragraph;
+        }
+
+        > button {
+            font: {
+                size: 18px; 
+                weight: 600;
+            }
+        }
+    }
+  
+}
 
 
 

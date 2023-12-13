@@ -126,15 +126,17 @@ table {
   font-weight: normal;
   font-style: normal;
 }
-.h3Title, #wideStylePage > h3, #sensualDesignTypo > h3 {
+.h3Title, #collaboPage > div:first-of-type > h3, #wideStylePage > h3, #sensualDesignTypo > h3 {
   color: #121212;
   font-size: 50px;
   font-weight: 900;
+  line-height: 1.2;
 }
 
-.paragraph, #wideStylePage > p, #sensualDesignTypo > p {
+.paragraph, #collaboPage > div:first-of-type > p, #wideStylePage > p, #sensualDesignTypo > p {
   font-size: 20px;
   font-weight: 400;
+  line-height: 1.5;
 }
 
 body {
@@ -211,6 +213,11 @@ body {
 }
 #seasonsLookBook > ul > li > a:hover > strong {
   transform: translate(-50%, -65%) scale(1.1);
+}
+
+#collaboPage > div:first-of-type > button {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 #overlaySlogan > button {
@@ -381,9 +388,6 @@ body {
 #wideStylePage > h3 {
   margin: 30px 0;
 }
-#wideStylePage > p {
-  line-height: 1.3;
-}
 
 #collaboPage {
   overflow: hidden;
@@ -402,7 +406,6 @@ body {
   transform: translate(-50%, -50%);
   transform: translate(-50%, -50%) scale(1);
   transform-origin: 50% 48%;
-  animation: collaboScale 2s ease 1;
   opacity: 0;
 }
 #collaboPage::after {
@@ -411,7 +414,57 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0);
-  animation: collaboScaleOverlay 2s linear 1;
+}
+#collaboPage > div:first-of-type {
+  transition-duration: 400ms;
+  z-index: 5;
+  position: absolute;
+  top: 0%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.79);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#collaboPage > div:first-of-type > h3 {
+  margin-bottom: 30px;
+}
+#collaboPage > div:first-of-type > button {
+  position: relative;
+  outline: none;
+  border: 2px solid #121212;
+  background-color: transparent;
+  padding: 12px 25px;
+  border-radius: 10px;
+  margin-top: 30px;
+  cursor: pointer;
+  overflow: hidden;
+  transition-duration: 200ms;
+}
+#collaboPage > div:first-of-type > button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #121212;
+  transition-property: transform;
+  transition-duration: 600ms;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+#collaboPage > div:first-of-type > button:hover {
+  color: #f1f1f1;
+}
+#collaboPage > div:first-of-type > button:hover::before {
+  transform: scaleX(1);
+  transform-origin: right;
 }
 
 #main {
