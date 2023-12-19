@@ -51,3 +51,9 @@
     transition-property: transform;
     transition-duration: 600ms;
 }
+
+@mixin ALinkOptionDefualt {
+    text-decoration: none;
+    color: $black;
+    display: block;
+}

@@ -128,6 +128,18 @@ table {
     left: 0%;
   }
 }
+@keyframes topImg1UP {
+  from {
+    top: 50%;
+    display: block;
+    opacity: 0;
+  }
+  to {
+    top: 30%;
+    display: block;
+    opacity: 1;
+  }
+}
 @font-face {
   font-family: "GmarketSans";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
@@ -245,6 +257,16 @@ body {
 #collaboBrandPage > button {
   font-size: 18px;
   font-weight: 600;
+}
+
+#clothesCategory {
+  font-family: "GmarketSans", sans-serif;
+  font-size: 30px;
+  line-height: 100px;
+}
+#clothesCategory > ul > li > a:hover {
+  font-weight: 900;
+  font-size: 35px;
 }
 
 #overlaySlogan > button {
@@ -845,6 +867,89 @@ body {
   background-repeat: no-repeat;
   background-size: 500px, 450px, 400px;
   background-position: 20% 70%, 25% 35%, 80% 75%;
+}
+
+#clothesCategory {
+  height: 100vh;
+  position: relative;
+}
+#clothesCategory > ul {
+  text-align: center;
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#clothesCategory > ul > li {
+  height: 100px;
+  border-top: 2px solid #121212;
+}
+#clothesCategory > ul > li > a {
+  text-decoration: none;
+  color: #121212;
+  display: block;
+}
+#clothesCategory > ul > li > a > span {
+  margin-left: 0%;
+  transition-duration: 200ms;
+}
+#clothesCategory > ul > li > img {
+  position: absolute;
+}
+#clothesCategory > ul > li:nth-of-type(1) > img {
+  display: none;
+}
+#clothesCategory > ul > li:nth-of-type(1) > img:nth-of-type(1) {
+  top: 30%;
+  right: 30%;
+}
+#clothesCategory > ul > li:nth-of-type(1) > img:nth-of-type(2) {
+  top: -20%;
+  right: 10%;
+}
+#clothesCategory > ul > li:nth-of-type(2) > img {
+  display: none;
+}
+#clothesCategory > ul > li:nth-of-type(2) > img:nth-of-type(1) {
+  top: -14%;
+  right: 30%;
+}
+#clothesCategory > ul > li:nth-of-type(2) > img:nth-of-type(2) {
+  top: 60%;
+  right: 10%;
+}
+#clothesCategory > ul > li:nth-of-type(3) > img {
+  display: none;
+}
+#clothesCategory > ul > li:nth-of-type(3) > img:nth-of-type(1) {
+  top: -15%;
+  right: 37%;
+}
+#clothesCategory > ul > li:nth-of-type(3) > img:nth-of-type(2) {
+  top: 45%;
+  right: 24%;
+}
+#clothesCategory > ul > li:last-of-type {
+  border-bottom: 2px solid #121212;
+}
+#clothesCategory > ul > li:last-of-type > img {
+  display: none;
+}
+#clothesCategory > ul > li:last-of-type > img:nth-of-type(1) {
+  top: 50%;
+  right: 25%;
+}
+#clothesCategory > ul > li:last-of-type > img:nth-of-type(2) {
+  top: 30%;
+  right: 3%;
+}
+#clothesCategory > ul > li:last-of-type > img:nth-of-type(3) {
+  top: -15%;
+  right: 35%;
+}
+#clothesCategory > ul:hover > li > a > span {
+  margin-left: -35%;
 }
 
 /*# sourceMappingURL=style.css.map */

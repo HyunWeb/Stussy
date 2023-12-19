@@ -90,3 +90,17 @@
         left: 0%;
     }
 }
+
+@keyframes topImg1UP{
+    from {
+        top: 50%;
+        display: block; 
+        opacity: 0;
+    }
+
+    to{
+        top: 30%;
+        display: block;
+        opacity: 1;
+    }
+}

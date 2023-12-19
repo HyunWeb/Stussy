@@ -199,3 +199,17 @@ body {
     }
 }
 
+#clothesCategory {
+    font: {
+        family: $Gmarket;
+        size: 30px;
+    }
+    line-height: $ClothLetterLine;
+    > ul > li > a:hover {
+        font: {
+            weight: 900;
+            size: 35px;
+        }
+    }
+}
+
