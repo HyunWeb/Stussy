@@ -2,7 +2,7 @@
 $Gmarket : "GmarketSans", sans-serif;
 
 @font-face {
-    font-family: 'GmarketSansMedium';
+    font-family: 'GmarketSans';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -164,7 +164,7 @@ body {
             @extend .paragraph;
         }
 
-        > button {
+        > button{
             font: {
                 size: 18px; 
                 weight: 600;
@@ -174,5 +174,28 @@ body {
   
 }
 
+.brandTitleBox {
+    font-family: $Gmarket;
+    text-align: center;
 
+    > div:nth-of-type(1) > h3{
+        font : {
+            size: 80px;
+            weight: 700;
+        }
+        margin-bottom: 30px;
+    }
+    > div:nth-of-type(2) > strong{
+        font: {
+            size: 50px;
+            weight: 900;
+        }
+    }
+}
+#collaboBrandPage > button {
+    font: {
+        size: 18px; 
+        weight: 600;
+    }
+}
 
