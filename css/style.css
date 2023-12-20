@@ -52,31 +52,6 @@ table {
   border-spacing: 0;
 }
 
-@keyframes scaleImage {
-  from {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  30% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  to {
-    transform: translate(-50%, -50%) scale(10);
-    opacity: 0;
-  }
-}
-@keyframes scaleImage2 {
-  from {
-    opacity: 1;
-  }
-  30% {
-    opacity: 0;
-  }
-  to {
-    opacity: 0;
-  }
-}
 @keyframes textShrink {
   from {
     transform: scale(314);
@@ -536,15 +511,15 @@ body {
 }
 #main > img:nth-child(1) {
   width: 100%;
-  animation: scaleImage 1s linear 1;
+  transition-duration: 200ms;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 #main > img:nth-child(2) {
-  animation: scaleImage2 1s linear 1;
   position: absolute;
+  transition-duration: 300ms;
   left: 50%;
   top: 52%;
   transform: translate(-50%, -50%);
