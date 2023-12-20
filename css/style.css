@@ -337,6 +337,7 @@ body {
 
 body {
   background-color: #f1f1f1;
+  overflow: hidden;
 }
 
 #main {
@@ -356,9 +357,19 @@ body {
   opacity: 0;
 }
 
+#flexBox {
+  display: flex;
+  width: 200vw;
+}
+#flexBox > div {
+  overflow: hidden;
+  width: 100vw;
+}
+
 #secondPage {
   position: absolute;
   top: 0%;
+  top: 100%;
   transition-duration: 400ms;
   width: 100vw;
   height: 100vh;

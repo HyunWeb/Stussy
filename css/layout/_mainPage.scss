@@ -1,5 +1,6 @@
 body {
     background-color: $white;
+    overflow: hidden;
 }
 
 #main {
@@ -20,3 +21,14 @@ body {
     }
     opacity: 0;
 }
+
+// 오른쪽 페이지 왼쪽 페이지 일렬 배치 작업
+#flexBox {
+    display:flex;
+    width: 200vw;
+    > div {
+        overflow: hidden;
+        width: 100vw;
+    }
+}
+
