@@ -1,13 +1,12 @@
 #secondPage{
     position: absolute;
-    top:0%;
     top: 100%;
-    transition-duration: 400ms;
+    transition-duration: 500ms;
     width: 100vw;
     height: 100vh;
     background: {
         color: $black;
-        color: $white;
+        // color: $white;
     }
     overflow: hidden;
 }

@@ -353,10 +353,11 @@ body {
 #secondPage {
   position: absolute;
   top: 100%;
-  transition-duration: 500ms;
+  transition-duration: 400ms;
   width: 100vw;
   height: 100vh;
   background-color: #121212;
+  background-color: #f1f1f1;
   overflow: hidden;
 }
 
@@ -547,27 +548,26 @@ body {
   top: 42%;
 }
 
+#secondPage > .logoTitle {
+  display: none;
+}
 #secondPage > h2 {
   position: absolute;
 }
 #secondPage > h2:nth-child(1) {
-  transition-duration: 600ms;
-  top: 50%;
+  top: 25%;
   left: 25%;
 }
 #secondPage > h2:nth-child(3) {
-  transition-duration: 300ms;
-  top: 85%;
+  top: 58%;
   left: 50%;
 }
 #secondPage > img {
-  transition-duration: 900ms;
   width: 500px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  top: 75%;
 }
 
 #logoWhitePage > img {
@@ -641,7 +641,6 @@ body {
 }
 
 #sensualDesign {
-  display: none;
   justify-content: center;
 }
 #sensualDesign div:first-of-type {
@@ -947,4 +946,4 @@ body {
   margin-left: -35%;
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=sytle.css.map */
