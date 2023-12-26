@@ -11,6 +11,7 @@ body {
 }
 
 #overlaySlogan{
+    display: none;
     position:absolute;
     top: 0; 
     left: 0;
@@ -19,6 +20,9 @@ body {
     background: {
         color: #000000ad;
     }
+}
+.sloganSource {
+    display: none;
 }
 
 // 오른쪽 페이지 왼쪽 페이지 일렬 배치 작업
