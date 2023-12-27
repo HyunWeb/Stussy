@@ -361,9 +361,8 @@ body {
 }
 
 #logoWhitePage {
-  transition-duration: 400ms;
+  transition-duration: 600ms;
   position: absolute;
-  left: 0%;
   left: -100%;
   width: 70vw;
   height: 100vh;
@@ -599,6 +598,15 @@ body {
 }
 .logoDetail > h2 {
   margin-bottom: 50px;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+}
+.logoDetail > h2 > span {
+  position: relative;
+  top: 0%;
+  top: 110%;
+  transition-duration: 400ms;
 }
 .logoDetail > div {
   display: flex;
@@ -606,6 +614,10 @@ body {
   width: 600px;
 }
 .logoDetail .logoTextLeft {
+  position: relative;
+  overflow: hidden;
+  height: 22px;
+  align-items: start;
   flex-basis: 200px;
   justify-content: space-between;
   display: flex;
@@ -613,13 +625,18 @@ body {
 .logoDetail .logoTextLeft > span {
   position: relative;
 }
-.logoDetail .logoTextLeft > span:nth-child(1)::after {
+.logoDetail .logoTextLeft > span:nth-of-type(1) {
+  top: 0%;
+  top: 110%;
+  transition-duration: 400ms;
+}
+.logoDetail .logoTextLeft > span:nth-child(2)::before {
   content: "";
   position: absolute;
   height: 2px;
   width: 100px;
   background-color: #121212;
-  left: 33px;
+  left: -106px;
   top: 8px;
 }
 .logoDetail .logoTextLeft > span:nth-child(2) {
@@ -629,7 +646,17 @@ body {
   flex-grow: 1;
 }
 .logoDetail .logoTextRight > p {
+  position: relative;
+  overflow: hidden;
+  height: 120px;
   margin-bottom: 20px;
+  white-space: nowrap;
+}
+.logoDetail .logoTextRight > p > span {
+  position: relative;
+  top: 0%;
+  top: 110%;
+  transition-duration: 400ms;
 }
 .logoDetail .logoTextRight > a {
   display: block;

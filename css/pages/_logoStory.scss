@@ -31,7 +31,17 @@
 
     > h2{
         margin-bottom: 50px; 
+        height: 60px;
+        position: relative;
+        overflow: hidden;
+        > span {
+            position: relative;
+            top: 0%;
+            top: 110%;
+            transition-duration: 400ms;
+        }
     }
+    
 
     > div{
         display: flex;
@@ -40,20 +50,30 @@
     }
 
     .logoTextLeft{
+        position: relative;
+        overflow: hidden;
+        height: 22px;
+        align-items: start;
         flex-basis: 200px;
         justify-content: space-between;
         display: flex;
         > span {
             position: relative;
         }
+        > span:nth-of-type(1){
+            top: 0%;
+            top: 110%;
+            transition-duration: 400ms;
+            
+        }
 
-        > span:nth-child(1)::after{
+        > span:nth-child(2)::before{
             content: "";
             position: absolute;
             height: 2px; 
             width: 100px; 
             background-color: $black;
-            left: 33px; 
+            left: -106px; 
             top: 8px; 
         }
         
@@ -66,7 +86,17 @@
         flex-grow: 1;
         
         > p {
+            position: relative;
+            overflow: hidden;
+            height: 120px;
             margin-bottom: 20px; 
+            white-space: nowrap;
+            > span {
+                position: relative;
+                top: 0%;
+                top: 110%;
+                transition-duration: 400ms;
+            }
         }
 
         > a {

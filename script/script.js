@@ -12,12 +12,15 @@ $(function () {
     const $sloganButton = $("#overlaySlogan > button");
     const $logoTitle = $(".logoTitle");
     let scrollIndex = 0;
-   
+    const $logoWhitePage = $("#logoWhitePage");
+    const $logoTitleSpan = $(".logoDetail > h2 > span");
+    const $logoTextSpan = $(".logoTextRight > p > span");
+    const $logoIndexSpan = $(".logoTextLeft > span:nth-of-type(1)");
     
 
     window.addEventListener("wheel", function (event) {
         event.preventDefault;
-        // console.log(pageIndex);
+        console.log(pageIndex);
 
         if(event.deltaY > 0) {
             //이미지가 최대크기고 페이지 인덱스가 0일때 페이지 인덱스를 1로 올린다. 
@@ -42,6 +45,12 @@ $(function () {
             }else if(pageIndex == 2 && parseInt($logoTitle.css("opacity"))){
                 logoTitleScrollUp();
             }
+
+            if(pageIndex == 3){
+                //페이지 인덱스가 3이되면 로고 페이지가 들어온다. 
+                logoPageIn();
+                
+            }
             
         }else{
             if(pageIndex <= 0){
@@ -61,6 +70,12 @@ $(function () {
             }else if(pageIndex == 2 && scrollIndex <= 1){
                 secondPageDown();
             }
+
+            if(pageIndex == 3){
+                //페이지를 숨기고 페이지 인덱스를 2로 내린다. 
+                logoPageOut();
+            }
+
         }
     });
 
@@ -69,9 +84,31 @@ $(function () {
         pageIndex = 2;
         secondPageUp();
     });
+
+    function logoPageIn() {
+        $logoWhitePage.css({left: `0%`});
+        window.setTimeout(() => {
+            $logoTitleSpan.css({top: `0%`});
+            $logoTextSpan.css({top: `0%`});
+            $logoIndexSpan.css({top: `0%`});
+        }, 500);
+        
+
+    }
+
+    function logoPageOut() {
+        $logoWhitePage.removeAttr("style");
+        $logoTitleSpan.removeAttr("style");
+            $logoTextSpan.removeAttr("style");
+            $logoIndexSpan.removeAttr("style");
+        pageIndex = 2;
+    }
     
     function logoTitleScrollUp() {
-        if(scrollIndex >= 15)return;
+        if(scrollIndex >= 15){
+            pageIndex = 3;
+            return;
+        }
         // console.log(scrollIndex);
         
         ++scrollIndex ;
