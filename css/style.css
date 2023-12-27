@@ -547,6 +547,9 @@ body {
   top: 42%;
 }
 
+#secondPage > .logoTitle {
+  opacity: 0;
+}
 #secondPage > h2 {
   position: absolute;
 }

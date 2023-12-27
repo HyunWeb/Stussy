@@ -1,5 +1,6 @@
 $(function () {
-    let imgSize = 10;
+    let imgSize = 1;
+    let imgScale = imgSize * 1.2;
     let pageIndex = 0;
     //타이틀 글씨
     const $titleImg = $("#main > img:nth-of-type(1)");
@@ -10,18 +11,17 @@ $(function () {
     const $secondPage = $("#secondPage");
     const $sloganButton = $("#overlaySlogan > button");
     const $logoTitle = $(".logoTitle");
+    let scrollIndex = 0;
+   
     
 
     window.addEventListener("wheel", function (event) {
         event.preventDefault;
-        
-        console.log(pageIndex);
-      
-        
+        // console.log(pageIndex);
 
         if(event.deltaY > 0) {
             //이미지가 최대크기고 페이지 인덱스가 0일때 페이지 인덱스를 1로 올린다. 
-            if(imgSize >= 50 && pageIndex == 0)pageIndex = 1;
+            if(imgScale >= 10 && pageIndex == 0)pageIndex = 1;
             if($sloganSource.is(":visible") && pageIndex == 1)pageIndex = 2;
             
             if(pageIndex == 0 || pageIndex == 1){
@@ -34,16 +34,16 @@ $(function () {
                 showSlogan();
             }
 
-            if(pageIndex == 2) {
+            //처음에만 페이지 올라온다. 두번째 스크롤부터는 요소가 올라간다. 
+            // 처음엔 투명도가 0이라 문자열 "0"반환 > 빈 문자열 아니라서 참 > parseInt로 숫자 0 거짓 > !로 참 변환
+            if(pageIndex == 2 && !parseInt($logoTitle.css("opacity"))) {
                 //다음 페이지 올라오기
-                secondPageUp();
+                secondPageUp();      
+            }else if(pageIndex == 2 && parseInt($logoTitle.css("opacity"))){
+                logoTitleScrollUp();
             }
             
-            
-
-            
         }else{
-
             if(pageIndex <= 0){
                 //인덱스 페이지가 0일때 타이틀 페이지 축소
                 titlePageDownscaleFunc();
@@ -55,27 +55,60 @@ $(function () {
                 hideSlogan();
             }
 
-            if(pageIndex == 2){
+            if(pageIndex == 2 && scrollIndex >= 2) {
+                //다음 페이지 올라오기
+                logoTitleScrollDown();
+            }else if(pageIndex == 2 && scrollIndex <= 1){
                 secondPageDown();
             }
         }
     });
 
+    // 슬로건 페이지의 버튼
     $sloganButton.on("click", function() {
         pageIndex = 2;
         secondPageUp();
     });
+    
+    function logoTitleScrollUp() {
+        if(scrollIndex >= 15)return;
+        // console.log(scrollIndex);
+        
+        ++scrollIndex ;
 
+        scrollSpeedLoop()    
+    }
 
+    function logoTitleScrollDown() {
+        if(scrollIndex <= 0)return;
+        console.log(scrollIndex)
 
+        -- scrollIndex;
+
+        scrollSpeedLoop();
+    }
+
+    function scrollSpeedLoop() {
+        const percentArrty = [25, 50, 58];
+        const dubblePercentArrty = [4, 6, 5];
+
+        //현재 top수치값을 불러와서 i만큼 더해서 재설정하자 
+        for(let i = 0; i < percentArrty.length; i++){
+            $logoTitle.eq(i).css({top: `${(percentArrty[i] -= scrollIndex * dubblePercentArrty[i])}%` });
+        }     
+    }
 
     function secondPageUp() {
+        scrollIndex = 0;
             $secondPage.css({top: "0%"});
             window.setTimeout(() => {
+                $logoTitle.css({opacity: "1"});
                 $logoTitle.eq(0).css({top: "25%"});
                 $logoTitle.eq(1).css({top: "50%"});
                 $logoTitle.eq(2).css({top: "58%"});
-            }, 250)
+            }, 250);
+            
+            
            
     }
 
@@ -102,57 +135,50 @@ $(function () {
     }
     
     function titlePageUpscaleFunc() {
-        let imgScale = imgSize / 100 * 10;
+        if(imgScale >= 10)return;
+        imgScale = ++imgSize * 1.2;
+
+        // 티셔츠가 사라진다.
+        if(imgScale >= 1){
+            $Tshirts.css({
+                opacity: 0 
+             });
+        }
 
         // 끝까지 갔으면 투명해지면서 더이상 안커진다. 
-        if(imgSize >= 50){
+        if(imgScale >= 10){
             $titleImg.css({
                 opacity: 0
              });
             return;
         }
-        // 티셔츠가 사라진다.
-        if(imgSize >= 10){
-            $Tshirts.css({
-                opacity: 0 
-             });
-        }
-        
-        imgSize++;
 
         $titleImg.css({
-            transform: `translate(-50%, -50%) scale(${imgScale.toFixed(2)})`
+            transform: `translate(-50%, -50%) scale(${imgScale.toFixed(1)})`
         });
     }
 
     function titlePageDownscaleFunc() {
-        let imgScale = imgSize / 100 * 10;
+        if(imgScale <= 0)return;
+        imgScale = --imgSize * 1.2;
 
-        if(imgSize <= 10){
+        if(imgScale <= 1){
             $Tshirts.css({
                opacity: 1 
             })
             return;
         }
 
-        if(imgSize <= 49){
+        if(imgScale <= 9.9){
             $titleImg.css({
                 opacity: 1 
              });
         }
 
-        imgSize--;
+        
 
         $titleImg.css({
-            transform: `translate(-50%, -50%) scale(${imgScale.toFixed(2)})`
+            transform: `translate(-50%, -50%) scale(${imgScale.toFixed(1)})`
         });             
     }
-
-/* 
-                퍼센트 * 100 * 전체 = 크기
-                10 / 100 * 10 = 1
-                11 / 100 * 10 = 1.1
-                ...
-                100 / 100 * 10 = 10
-            */
 }); //document.onready
