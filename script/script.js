@@ -12,15 +12,22 @@ $(function () {
     const $sloganButton = $("#overlaySlogan > button");
     const $logoTitle = $(".logoTitle");
     let scrollIndex = 0;
+    let logoListIndex = 1;
     const $logoWhitePage = $("#logoWhitePage");
+    const $logoTextBoxList = $(".logoDetail");
     const $logoTitleSpan = $(".logoDetail > h2 > span");
     const $logoTextSpan = $(".logoTextRight > p > span");
     const $logoIndexSpan = $(".logoTextLeft > span:nth-of-type(1)");
+    const logoSpanArray = [$logoTitleSpan, $logoTextSpan, $logoIndexSpan];
+    let logopageControl = 0;
+    const $logoImg = $(".logoImg");
+    const $logoImgOn = $(".logoImg.on");
+
     
 
     window.addEventListener("wheel", function (event) {
         event.preventDefault;
-        console.log(pageIndex);
+        // console.log(pageIndex);
 
         if(event.deltaY > 0) {
             //이미지가 최대크기고 페이지 인덱스가 0일때 페이지 인덱스를 1로 올린다. 
@@ -46,10 +53,22 @@ $(function () {
                 logoTitleScrollUp();
             }
 
-            if(pageIndex == 3){
+            if(pageIndex == 3 && parseInt($logoWhitePage.css("left"))){
+                logoListIndex = 1;
                 //페이지 인덱스가 3이되면 로고 페이지가 들어온다. 
                 logoPageIn();
-                
+
+            }else if(pageIndex == 3 && !parseInt($logoWhitePage.css("left"))){
+                //스크롤 이벤트 조절
+                if(logopageControl == 0){
+                    logopageControl = 1
+
+                changeLogoFunc();
+                changeImgFunc();
+                changeBackgroundFunc();
+
+                window.setTimeout(()=>{logopageControl = 0},500);
+                }
             }
             
         }else{
@@ -85,22 +104,80 @@ $(function () {
         secondPageUp();
     });
 
+    function changeBackgroundFunc() {
+        if(logoListIndex >= 3) return;
+        console.log(logoListIndex);
+        $logoWhitePage.css({backgroundImage: `url("img/logoBackgroundNumber${logoListIndex + 1}.png")`})
+    }
+    
+    function changeImgFunc() {
+        if(logoListIndex >= 3) return;
+        logoImgHide();
+
+        window.setTimeout(() => {logoImgOnChange();}, 400) 
+    }
+
+    function logoImgOnChange() {
+        $logoImg.removeClass("on").filter(`:nth-of-type(${logoListIndex})`).addClass("on");
+        let $logoImgOn = $(".logoImg.on");
+        $logoImgOn.animate({top:"50%", opacity: 1}, 300)
+    }
+
+    function logoImgHide() {
+        let $logoImgOn = $(".logoImg.on");
+        $logoImgOn.animate({top: "35%", opacity: 0});
+        window.setTimeout(() => {$logoImgOn.removeAttr("style");}, 400) ;
+    }
+   
+    function changeLogoFunc() {
+        if(logoListIndex >= 3) return;
+        hideSpanLoop();
+        
+        window.setTimeout( () => { 
+
+            logoListIndex++;
+            $logoTextBoxList.removeClass("on").filter(`:nth-of-type(${logoListIndex})`).addClass("on");
+    
+            window.setTimeout(() => {showSpanLoop();}, 100) 
+        }, 400);
+    }
+
     function logoPageIn() {
+        logoReturnFirstPage();
         $logoWhitePage.css({left: `0%`});
         window.setTimeout(() => {
-            $logoTitleSpan.css({top: `0%`});
-            $logoTextSpan.css({top: `0%`});
-            $logoIndexSpan.css({top: `0%`});
+            showSpanLoop();
         }, 500);
-        
+        $logoImg.eq(0).addClass("on");
+        $logoImgOn.delay(500).animate({top: "50%", opacity: "1"});
+        window.setTimeout(() => {$logoImg.eq(0).clearQueue();}, 600)
+    }
 
+    function logoReturnFirstPage(){
+        logoListIndex = 1;
+        $logoTextBoxList.removeClass("on").filter(`:nth-of-type(${logoListIndex})`).addClass("on");
+    }
+
+    function hideSpanLoop() {
+        for(let i = 0; i < logoSpanArray.length; i++){
+            logoSpanArray[i].removeAttr("style");
+        }
+    }
+
+    function showSpanLoop() {
+        for(let i = 0; i < logoSpanArray.length; i++){
+            logoSpanArray[i].css({top: `0%`});
+        }
     }
 
     function logoPageOut() {
         $logoWhitePage.removeAttr("style");
         $logoTitleSpan.removeAttr("style");
-            $logoTextSpan.removeAttr("style");
-            $logoIndexSpan.removeAttr("style");
+        $logoTextSpan.removeAttr("style");
+        $logoIndexSpan.removeAttr("style");
+        window.setTimeout(() => 
+        {$logoImg.removeAttr("style").removeClass("on");}, 600)
+        
         pageIndex = 2;
     }
     
@@ -109,7 +186,6 @@ $(function () {
             pageIndex = 3;
             return;
         }
-        // console.log(scrollIndex);
         
         ++scrollIndex ;
 
@@ -118,7 +194,6 @@ $(function () {
 
     function logoTitleScrollDown() {
         if(scrollIndex <= 0)return;
-        console.log(scrollIndex)
 
         -- scrollIndex;
 

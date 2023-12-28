@@ -575,7 +575,7 @@ body {
 #logoWhitePage > img {
   width: 400px;
   position: absolute;
-  top: 50%;
+  top: 65%;
   transform: translateY(-50%);
   right: -20%;
 }
@@ -611,7 +611,7 @@ body {
 .logoDetail > div {
   display: flex;
   justify-content: space-between;
-  width: 600px;
+  width: 650px;
 }
 .logoDetail .logoTextLeft {
   position: relative;

@@ -2,7 +2,8 @@
     > img{
         width: 400px;
         position:absolute;
-        @include transform-center-Y;
+        top: 65%;
+        transform: translateY(-50%);
         right: -20%;
         // opacity: 0;
     }
@@ -46,7 +47,7 @@
     > div{
         display: flex;
         justify-content: space-between;
-        width: 600px;
+        width: 650px;
     }
 
     .logoTextLeft{
