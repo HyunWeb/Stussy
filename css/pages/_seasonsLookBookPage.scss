@@ -8,11 +8,15 @@
         justify-content: space-around;
         
         > li {
-            
-            &.on > a {
-                transform:scale(1.1);
-                > strong {
-                    display: block;
+            &.on {
+                position: relative;
+                z-index: 1;
+
+                > a {
+                    transform:scale(1.1);
+                    > strong {
+                        display: block;
+                    }
                 }
             }
 
@@ -33,7 +37,7 @@
         } 
     }
     > button {
-        width: 27%; 
+        width: 20%; 
         height: 100%;
         position: absolute;
         @include transform-center-Y;
@@ -43,7 +47,7 @@
         background: {
             color: transparent;
             repeat: no-repeat;
-            size: 100px;
+            size: 80px;
         }
         border: none;
         cursor: pointer;
@@ -64,7 +68,7 @@
         }
 
         &:hover {
-            background-size: 110px; 
+            background-size: 90px; 
         }
 
         > span{

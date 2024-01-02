@@ -27,6 +27,8 @@ $(function () {
     const $sensualDesign = $("#sensualDesign");
     const $modelBackground= $("#sensualDesign div:first-of-type > img:nth-of-type(1)")
     const $flexBox = $("#flexBox");
+    const $wideStyleContent = $("#lookBookPage > div:first-Child");
+
 
     
 
@@ -81,7 +83,7 @@ $(function () {
                     window.setTimeout(()=>{logopageControl = 0},500);
                 }
             }
-            
+        
 
             if(pageIndex == 4 && $styleTitleH2.attr("style")){
                 styleTitleDown();
@@ -92,8 +94,22 @@ $(function () {
 
             if(pageIndex == 5 && $modelBackground.attr("style")){
                 $flexBox.css({marginLeft: "-100%"});
+
+                $wideStyleContent.children("img:first-child").css({left: "13%"});
+                $wideStyleContent.children("img:nth-child(2)").css({left: "20%"});
+                $wideStyleContent.children("div").css({right: "15%"});
+
+                window.setTimeout(()=>{pageIndex = 6},400);
             }
-                      
+
+            if(pageIndex == 6 ){
+                $flexBox.css({marginTop: "-100vh"})
+                $wideStyleContent.children("img:nth-child(2)").css({top: "10%"});
+                $wideStyleContent.children("div").css({top: "35%"});
+
+                window.setTimeout(()=>{pageIndex = 7},400);
+            }
+// -----------------------------------------------------------  
         }else{
             if(pageIndex <= 0){
                 //인덱스 페이지가 0일때 타이틀 페이지 축소
@@ -144,7 +160,24 @@ $(function () {
                 prevTextShrink();
 
                 this.window.setTimeout(() => {pageIndex = 4; logopageControl = 0}, 2000);
-            }             
+            }           
+            if(pageIndex == 6){
+                logopageControl = 1
+                
+                $flexBox.removeAttr("style");
+                $wideStyleContent.children().removeAttr("style");
+                pageIndex = 5;
+
+                this.window.setTimeout(() => {logopageControl = 0}, 500);
+            }  
+
+            if(pageIndex == 7) {
+                $flexBox.css({marginTop: "0vh"})
+                $wideStyleContent.children("img:nth-child(2)").css({top: ""});
+                $wideStyleContent.children("div").css({top: ""});
+
+                this.window.setTimeout(() => {pageIndex = 6}, 400)
+            }
         }
     });
 

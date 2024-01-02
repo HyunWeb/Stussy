@@ -410,21 +410,22 @@ body {
 }
 #lookBookPage > div:first-of-type > img, #lookBookPage > div:first-of-type div {
   position: absolute;
+  transition-duration: 1.2s;
 }
 #lookBookPage > div:first-of-type > img:nth-of-type(1) {
   width: 250px;
   top: 20%;
-  left: 13%;
+  left: 20%;
 }
 #lookBookPage > div:first-of-type > img:nth-of-type(2) {
   width: 230px;
   top: 45%;
-  left: 20%;
+  left: 35%;
 }
 #lookBookPage > div:first-of-type > div {
   top: 50%;
   transform: translateY(-50%);
-  right: 15%;
+  right: 0%;
 }
 
 #wideStylePage > h3 {
@@ -725,6 +726,10 @@ body {
   width: 132%;
   justify-content: space-around;
 }
+#seasonsLookBook > ul > li.on {
+  position: relative;
+  z-index: 1;
+}
 #seasonsLookBook > ul > li.on > a {
   transform: scale(1.1);
 }
@@ -746,7 +751,7 @@ body {
   display: none;
 }
 #seasonsLookBook > button {
-  width: 27%;
+  width: 20%;
   height: 100%;
   position: absolute;
   top: 50%;
@@ -755,7 +760,7 @@ body {
   outline: none;
   background-color: transparent;
   background-repeat: no-repeat;
-  background-size: 100px;
+  background-size: 80px;
   border: none;
   cursor: pointer;
 }
@@ -770,7 +775,7 @@ body {
   right: 0;
 }
 #seasonsLookBook > button:hover {
-  background-size: 110px;
+  background-size: 90px;
 }
 #seasonsLookBook > button > span {
   position: absolute;
