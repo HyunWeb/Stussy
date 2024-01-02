@@ -342,6 +342,7 @@ body {
 }
 
 #flexBox {
+  transition-duration: 1s;
   display: flex;
   width: 200vw;
 }
@@ -690,8 +691,8 @@ body {
   transform: translate(-50%, -50%);
 }
 #sensualDesign div:first-of-type > img:nth-of-type(1) {
-  width: 210px;
-  animation: imgShrink 0.5s 1s ease 1;
+  width: 380px;
+  transition-duration: 1s;
 }
 #sensualDesign div:first-of-type > img:nth-of-type(2) {
   width: 170px;
@@ -703,7 +704,8 @@ body {
   justify-content: center;
 }
 #sensualDesign > #sensualDesignTypo > h3 {
-  transform: scale(1);
+  transition-duration: 1s;
+  transform: scale(314);
   transform-origin: 36%;
 }
 #sensualDesign > #sensualDesignTypo > p {

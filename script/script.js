@@ -22,12 +22,18 @@ $(function () {
     let logopageControl = 0;
     const $logoImg = $(".logoImg");
     const $logoImgOn = $(".logoImg.on");
+    const $styleTitleH2 = $("#styleTitle > h2");
+    const $sensualDesignTypo = $("#sensualDesignTypo > h3");
+    const $sensualDesign = $("#sensualDesign");
+    const $modelBackground= $("#sensualDesign div:first-of-type > img:nth-of-type(1)")
+    const $flexBox = $("#flexBox");
 
     
 
     window.addEventListener("wheel", function (event) {
         event.preventDefault;
-        // console.log(pageIndex);
+        console.log(pageIndex);
+        
 
         if(event.deltaY > 0) {
             //이미지가 최대크기고 페이지 인덱스가 0일때 페이지 인덱스를 1로 올린다. 
@@ -54,23 +60,40 @@ $(function () {
             }
 
             if(pageIndex == 3 && parseInt($logoWhitePage.css("left"))){
-                logoListIndex = 1;
+                // logoListIndex = 1;
                 //페이지 인덱스가 3이되면 로고 페이지가 들어온다. 
                 logoPageIn();
-
             }else if(pageIndex == 3 && !parseInt($logoWhitePage.css("left"))){
                 //스크롤 이벤트 조절
                 if(logopageControl == 0){
                     logopageControl = 1
+                    changeLogoFunc();
+                    changeImgFunc();
+                    changeBackgroundFunc();
 
-                changeLogoFunc();
-                changeImgFunc();
-                changeBackgroundFunc();
+                    if(pageIndex == 3 && logoListIndex == 3){
+                        //마지막 페이지에서는 페이지의 인덱스를 높인다. 
+                        logoPageEnd();
+                        styleTitleUp();
 
-                window.setTimeout(()=>{logopageControl = 0},500);
+                        pageIndex = 4; 
+                    }
+                    window.setTimeout(()=>{logopageControl = 0},500);
                 }
             }
             
+
+            if(pageIndex == 4 && $styleTitleH2.attr("style")){
+                styleTitleDown();
+                shrinkText();
+                
+                pageIndex = 5;
+            }
+
+            if(pageIndex == 5 && $modelBackground.attr("style")){
+                $flexBox.css({marginLeft: "-100%"});
+            }
+                      
         }else{
             if(pageIndex <= 0){
                 //인덱스 페이지가 0일때 타이틀 페이지 축소
@@ -90,11 +113,38 @@ $(function () {
                 secondPageDown();
             }
 
-            if(pageIndex == 3){
+            if(pageIndex == 3 && logoListIndex == 1){
                 //페이지를 숨기고 페이지 인덱스를 2로 내린다. 
                 logoPageOut();
+            }else if(pageIndex == 3 && (logoListIndex == 2 || logoListIndex == 3)){
+                //스크롤 이벤트 횟수 컨트롤
+                if(logopageControl == 0){
+                    logopageControl = 1
+                    
+                    prevLogoFunc();
+                    prevChangeImgFunc();
+                    prevChangeBackgroundFunc();
+
+                    window.setTimeout(()=>{logopageControl = 0},500);
+                }
             }
 
+            if(pageIndex == 4 && parseInt($logoWhitePage.css("left"))){
+                $styleTitleH2.removeAttr("style");
+                
+                $logoWhitePage.css({left: `0%`});
+
+                //인덱스가 바로 3에서 2로 넘어가 버리는 문제 > 살짝 늦게 인덱스를 내린다. 
+                this.window.setTimeout(() => {pageIndex = 3}, 400)
+            }
+
+            if(pageIndex == 5 && logopageControl == 0){
+                logopageControl = 1
+
+                prevTextShrink();
+
+                this.window.setTimeout(() => {pageIndex = 4; logopageControl = 0}, 2000);
+            }             
         }
     });
 
@@ -104,10 +154,56 @@ $(function () {
         secondPageUp();
     });
 
+    function prevTextShrink() {
+        $sensualDesignTypo.removeAttr("style");
+    
+
+        this.window.setTimeout(() => {
+            $secondPage.css({backgroundColor: ""});
+            this.window.setTimeout(() => {$sensualDesign.css({display: "none"})}, 400);
+            $modelBackground.removeAttr("style");
+            styleTitleUp();
+        }, 1200);
+    }
+
+    function shrinkText() {
+        // none이었던 요소를 다시 플렉스로 되돌린다. 
+        this.window.setTimeout(() => {$sensualDesign.css({display:"flex"})},400)
+
+        this.window.setTimeout(() => {
+            $sensualDesignTypo.css({transform: "scale(1)"})
+            $secondPage.css({backgroundColor: "#f1f1f1"})
+            this.window.setTimeout(()=>{
+                $modelBackground.css({width: "210px"})
+            }, 1200)
+        }, 500);
+    }
+
+    function styleTitleDown() {
+        $styleTitleH2.removeAttr("style");
+        // this.window.setTimeout(()=>{pageIndex = 6;}, 400)
+    }
+
+    function styleTitleUp() {
+        //타이틀이 솟아오른다.
+        this.window.setTimeout(() => {
+            $styleTitleH2.css({top: 0});
+        }, 400);
+    }
+
+    function prevChangeBackgroundFunc() {
+        $logoWhitePage.css({backgroundImage: `url("img/logoBackgroundNumber${logoListIndex - 1}.png")`})
+    }
+
     function changeBackgroundFunc() {
         if(logoListIndex >= 3) return;
-        console.log(logoListIndex);
         $logoWhitePage.css({backgroundImage: `url("img/logoBackgroundNumber${logoListIndex + 1}.png")`})
+    }
+
+    function prevChangeImgFunc() {
+        logoImgHide();
+
+        window.setTimeout(() => {logoImgOnChange();}, 400) 
     }
     
     function changeImgFunc() {
@@ -120,13 +216,26 @@ $(function () {
     function logoImgOnChange() {
         $logoImg.removeClass("on").filter(`:nth-of-type(${logoListIndex})`).addClass("on");
         let $logoImgOn = $(".logoImg.on");
-        $logoImgOn.animate({top:"50%", opacity: 1}, 300)
+        $logoImgOn.animate({top:"50%", opacity: 1}, 300);
     }
 
     function logoImgHide() {
         let $logoImgOn = $(".logoImg.on");
         $logoImgOn.animate({top: "35%", opacity: 0});
         window.setTimeout(() => {$logoImgOn.removeAttr("style");}, 400) ;
+    }
+
+    function prevLogoFunc() {
+        hideSpanLoop();
+
+        window.setTimeout(() => {
+
+            logoListIndex--;
+
+            $logoTextBoxList.removeClass("on").filter(`:nth-of-type(${logoListIndex})`).addClass("on");
+
+            window.setTimeout(() => {showSpanLoop();}, 100) 
+        }, 400);  
     }
    
     function changeLogoFunc() {
@@ -136,6 +245,7 @@ $(function () {
         window.setTimeout( () => { 
 
             logoListIndex++;
+           
             $logoTextBoxList.removeClass("on").filter(`:nth-of-type(${logoListIndex})`).addClass("on");
     
             window.setTimeout(() => {showSpanLoop();}, 100) 
@@ -168,6 +278,10 @@ $(function () {
         for(let i = 0; i < logoSpanArray.length; i++){
             logoSpanArray[i].css({top: `0%`});
         }
+    }
+
+    function logoPageEnd() {
+        $logoWhitePage.removeAttr("style");
     }
 
     function logoPageOut() {
