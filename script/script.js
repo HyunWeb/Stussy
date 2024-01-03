@@ -28,164 +28,231 @@ $(function () {
     const $modelBackground= $("#sensualDesign div:first-of-type > img:nth-of-type(1)")
     const $flexBox = $("#flexBox");
     const $wideStyleContent = $("#lookBookPage > div:first-Child");
+    const $seasonsLookBook = $("#seasonsLookBook");
+    const $LookBookLeftButton = $seasonsLookBook.children("button:nth-of-type(1)");
+    const $LookBookRightButton = $seasonsLookBook.children("button:nth-of-type(2)");
+    const $LookBookImgList = $seasonsLookBook.children("ul");
+    let $LookBookOnImg  = $LookBookImgList.children("li.on");
+    let $LookBookOnStrong = $LookBookOnImg.children("a").children("strong");
+    const $collaboPage = $("#collaboPage");
+    const $collaboPageMainImg = $("#collaboPage > img:nth-of-type(1)");
+    let collaboImgSize = 1
+    let collaboImgScale = collaboImgSize * 1.2;
 
+    //빈 요소<div>를 스크립트를 활용해 생성
+    blackoverlay();
+    const $blackoverlay = $("#blackoverlay");
 
-    
 
     window.addEventListener("wheel", function (event) {
-        event.preventDefault;
+        event.preventDefault();
         console.log(pageIndex);
-        
 
         if(event.deltaY > 0) {
-            //이미지가 최대크기고 페이지 인덱스가 0일때 페이지 인덱스를 1로 올린다. 
-            if(imgScale >= 10 && pageIndex == 0)pageIndex = 1;
-            if($sloganSource.is(":visible") && pageIndex == 1)pageIndex = 2;
-            
-            if(pageIndex == 0 || pageIndex == 1){
-                //타이틀 페이지 확대
-                titlePageUpscaleFunc();
-            }
-
-            if(pageIndex == 1) {
-                //슬로건 보여주기
-                showSlogan();
-            }
-
-            //처음에만 페이지 올라온다. 두번째 스크롤부터는 요소가 올라간다. 
-            // 처음엔 투명도가 0이라 문자열 "0"반환 > 빈 문자열 아니라서 참 > parseInt로 숫자 0 거짓 > !로 참 변환
-            if(pageIndex == 2 && !parseInt($logoTitle.css("opacity"))) {
-                //다음 페이지 올라오기
-                secondPageUp();      
-            }else if(pageIndex == 2 && parseInt($logoTitle.css("opacity"))){
-                logoTitleScrollUp();
-            }
-
-            if(pageIndex == 3 && parseInt($logoWhitePage.css("left"))){
-                // logoListIndex = 1;
-                //페이지 인덱스가 3이되면 로고 페이지가 들어온다. 
-                logoPageIn();
-            }else if(pageIndex == 3 && !parseInt($logoWhitePage.css("left"))){
-                //스크롤 이벤트 조절
-                if(logopageControl == 0){
-                    logopageControl = 1
-                    changeLogoFunc();
-                    changeImgFunc();
-                    changeBackgroundFunc();
-
-                    if(pageIndex == 3 && logoListIndex == 3){
-                        //마지막 페이지에서는 페이지의 인덱스를 높인다. 
-                        logoPageEnd();
-                        styleTitleUp();
-
-                        pageIndex = 4; 
-                    }
-                    window.setTimeout(()=>{logopageControl = 0},500);
-                }
-            }
-        
-
-            if(pageIndex == 4 && $styleTitleH2.attr("style")){
-                styleTitleDown();
-                shrinkText();
-                
-                pageIndex = 5;
-            }
-
-            if(pageIndex == 5 && $modelBackground.attr("style")){
-                $flexBox.css({marginLeft: "-100%"});
-
-                $wideStyleContent.children("img:first-child").css({left: "13%"});
-                $wideStyleContent.children("img:nth-child(2)").css({left: "20%"});
-                $wideStyleContent.children("div").css({right: "15%"});
-
-                window.setTimeout(()=>{pageIndex = 6},400);
-            }
-
-            if(pageIndex == 6 ){
-                $flexBox.css({marginTop: "-100vh"})
-                $wideStyleContent.children("img:nth-child(2)").css({top: "10%"});
-                $wideStyleContent.children("div").css({top: "35%"});
-
-                window.setTimeout(()=>{pageIndex = 7},400);
-            }
-// -----------------------------------------------------------  
-        }else{
-            if(pageIndex <= 0){
-                //인덱스 페이지가 0일때 타이틀 페이지 축소
-                titlePageDownscaleFunc();
-            }
-            
-            //인덱스 페이지가 1일때 스크롤을 올리면 슬로건이 숨겨지며 인덱스 페이지가 0
-            if(pageIndex == 1){
-                //슬로건 숨기기, 콜백함수로 애니메이션 끝나면 페이지 인덱스 0으로 감소
-                hideSlogan();
-            }
-
-            if(pageIndex == 2 && scrollIndex >= 2) {
-                //다음 페이지 올라오기
-                logoTitleScrollDown();
-            }else if(pageIndex == 2 && scrollIndex <= 1){
-                secondPageDown();
-            }
-
-            if(pageIndex == 3 && logoListIndex == 1){
-                //페이지를 숨기고 페이지 인덱스를 2로 내린다. 
-                logoPageOut();
-            }else if(pageIndex == 3 && (logoListIndex == 2 || logoListIndex == 3)){
-                //스크롤 이벤트 횟수 컨트롤
-                if(logopageControl == 0){
-                    logopageControl = 1
-                    
-                    prevLogoFunc();
-                    prevChangeImgFunc();
-                    prevChangeBackgroundFunc();
-
-                    window.setTimeout(()=>{logopageControl = 0},500);
-                }
-            }
-
-            if(pageIndex == 4 && parseInt($logoWhitePage.css("left"))){
-                $styleTitleH2.removeAttr("style");
-                
-                $logoWhitePage.css({left: `0%`});
-
-                //인덱스가 바로 3에서 2로 넘어가 버리는 문제 > 살짝 늦게 인덱스를 내린다. 
-                this.window.setTimeout(() => {pageIndex = 3}, 400)
-            }
-
-            if(pageIndex == 5 && logopageControl == 0){
-                logopageControl = 1
-
-                prevTextShrink();
-
-                this.window.setTimeout(() => {pageIndex = 4; logopageControl = 0}, 2000);
-            }           
-            if(pageIndex == 6){
-                logopageControl = 1
-                
-                $flexBox.removeAttr("style");
-                $wideStyleContent.children().removeAttr("style");
-                pageIndex = 5;
-
-                this.window.setTimeout(() => {logopageControl = 0}, 500);
-            }  
-
-            if(pageIndex == 7) {
-                $flexBox.css({marginTop: "0vh"})
-                $wideStyleContent.children("img:nth-child(2)").css({top: ""});
-                $wideStyleContent.children("div").css({top: ""});
-
-                this.window.setTimeout(() => {pageIndex = 6}, 400)
-            }
+            scrollDown();
+        }else if(event.deltaY < 0){
+            scrollUp();
         }
-    });
+    }, {passive: false});
 
     // 슬로건 페이지의 버튼
     $sloganButton.on("click", function() {
         pageIndex = 2;
         secondPageUp();
     });
+   
+    // 룩북 페이지 버튼
+    $LookBookLeftButton.on("click", function() {
+        resetVaviable(); 
+        movingLeftFunc();
+    });
+
+    $LookBookRightButton.on("click", function() {
+        resetVaviable(); 
+        movingRight();
+    });
+
+    function blackoverlay() {
+        $("<div id='blackoverlay'></div>").appendTo($collaboPage);
+    }
+
+    function scrollDown(){
+        //이미지가 최대크기고 페이지 인덱스가 0일때 페이지 인덱스를 1로 올린다. 
+        if(pageIndex == 0 || pageIndex == 1){
+            //타이틀 페이지 확대
+            titlePageUpscaleFunc();
+            if(pageIndex == 0 && imgScale >= 10){
+                pageIndex = 1;
+            }else if(pageIndex == 1 && !$sloganSource.is(":visible")) {
+                //슬로건 보여주기
+                showSlogan();
+            }else if($sloganSource.is(":visible") && pageIndex == 1){
+                pageIndex = 2;
+            }
+        }else if(pageIndex == 2 && !parseInt($logoTitle.css("opacity"))) {
+            //다음 페이지 올라오기
+            secondPageUp();      
+        }else if(pageIndex == 2 && parseInt($logoTitle.css("opacity"))){
+            logoTitleScrollUp();
+        }else if(pageIndex == 3 && parseInt($logoWhitePage.css("left"))){
+            // logoListIndex = 1;
+            //페이지 인덱스가 3이되면 로고 페이지가 들어온다. 
+            logoPageIn();
+        }else if(pageIndex == 3 && !parseInt($logoWhitePage.css("left"))){
+            //스크롤 이벤트 조절
+            if(logopageControl == 0){
+                logopageControl = 1
+                changeLogoFunc();
+                changeImgFunc();
+                changeBackgroundFunc();
+
+                if(pageIndex == 3 && logoListIndex == 3){
+                    //마지막 페이지에서는 페이지의 인덱스를 높인다. 
+                    logoPageEnd();
+                    styleTitleUp();
+
+                    pageIndex = 4; 
+                }
+                window.setTimeout(()=>{logopageControl = 0},500);
+            }
+        }else if(pageIndex == 4 && $styleTitleH2.attr("style")){
+            styleTitleDown();
+            shrinkText();
+            
+            pageIndex = 5;
+        }else if(pageIndex == 5 && $modelBackground.attr("style")){
+            $flexBox.css({marginLeft: "-100%"});
+
+            $wideStyleContent.children("img:first-child").css({left: "13%"});
+            $wideStyleContent.children("img:nth-child(2)").css({left: "20%"});
+            $wideStyleContent.children("div").css({right: "15%"});
+
+            window.setTimeout(()=>{pageIndex = 6},400);
+        }else if(pageIndex == 6 ){
+            $flexBox.css({marginTop: "-100vh"})
+            $wideStyleContent.children("img:nth-child(2)").css({top: "10%"});
+            $wideStyleContent.children("div").css({top: "35%"});
+
+            window.setTimeout(()=>{pageIndex = 7},400);
+        }else if(pageIndex == 7){
+            $flexBox.css({marginTop: "-200vh"});
+            window.setTimeout(()=>{ pageIndex = 8 },400);
+        }else if(pageIndex == 8 && collaboImgSize >= 1){
+            if(collaboImgSize <= 10){
+                $blackoverlay.css({opacity: "0"});
+                this.window.setTimeout(() => {
+                    $blackoverlay.css({display: "none"});
+                }, 400);
+            }
+            if(collaboImgSize >= 150){
+                $collaboPageMainImg.css({opacity: 0});
+                this.window.setTimeout(() => {
+                    $collaboPageMainImg.css({display: "none"});
+                }, 200);
+                return;
+            } 
+    
+            $collaboPageMainImg.css({transform: `translate(-50%, -50%) scale(${collaboImgSize})`});
+            collaboImgScale = ++collaboImgSize * 1.2;
+        }
+    }
+
+    function scrollUp(){
+        if(pageIndex <= 0){
+            //인덱스 페이지가 0일때 타이틀 페이지 축소
+            titlePageDownscaleFunc();
+        }else if(pageIndex == 1){
+            //슬로건 숨기기, 콜백함수로 애니메이션 끝나면 페이지 인덱스 0으로 감소
+            hideSlogan();
+        }else if(pageIndex == 2 && scrollIndex >= 2) {
+            //다음 페이지 올라오기
+            logoTitleScrollDown();
+        }else if(pageIndex == 2 && scrollIndex <= 1){
+            secondPageDown();
+        }else if(pageIndex == 3 && logoListIndex == 1){
+            //페이지를 숨기고 페이지 인덱스를 2로 내린다. 
+            logoPageOut();
+        }else if(pageIndex == 3 && (logoListIndex == 2 || logoListIndex == 3)){
+            //스크롤 이벤트 횟수 컨트롤
+            if(logopageControl == 0){
+                logopageControl = 1
+                
+                prevLogoFunc();
+                prevChangeImgFunc();
+                prevChangeBackgroundFunc();
+
+                window.setTimeout(()=>{logopageControl = 0},500);
+            }
+        }else if(pageIndex == 4 && parseInt($logoWhitePage.css("left"))){
+            $styleTitleH2.removeAttr("style");
+            
+            $logoWhitePage.css({left: `0%`});
+
+            //인덱스가 바로 3에서 2로 넘어가 버리는 문제 > 살짝 늦게 인덱스를 내린다. 
+            this.window.setTimeout(() => {pageIndex = 3}, 400)
+        }else if(pageIndex == 5 && logopageControl == 0){
+            logopageControl = 1
+
+            prevTextShrink();
+
+            this.window.setTimeout(() => {pageIndex = 4; logopageControl = 0}, 2000);
+        }else if(pageIndex == 6){
+            logopageControl = 1
+            
+            $flexBox.removeAttr("style");
+            $wideStyleContent.children().removeAttr("style");
+            pageIndex = 5;
+
+            this.window.setTimeout(() => {logopageControl = 0}, 500);
+        }else if(pageIndex == 7) {
+            $flexBox.css({marginTop: "0vh"})
+            $wideStyleContent.children("img:nth-child(2)").css({top: ""});
+            $wideStyleContent.children("div").css({top: ""});
+
+            this.window.setTimeout(() => {pageIndex = 6}, 400);
+        }else if(pageIndex == 8){
+            if(collaboImgSize <= 1){
+                collaboImgSize = 1;
+                $collaboPageMainImg.css({display: "block", opacity: 1});
+                return;
+            }
+            collaboImgSize = --collaboImgSize
+            $collaboPageMainImg.css({transform: `translate(-50%, -50%) scale(${collaboImgSize})`});
+        }
+    }
+
+    function movingRight() {
+        $LookBookOnImg.next().addClass("on").children("a").children("strong").fadeIn();
+        $LookBookOnImg.removeClass("on");
+        
+        // ul을 30% 옮겨서 다음 요소를 가운데로 위치 시킨다. 
+        $LookBookImgList.css({transitionDuration: "400ms",left: "-33%"});
+
+        window.setTimeout(() => {
+            $LookBookImgList.children("li:first-child").appendTo($LookBookImgList);
+            $LookBookImgList.removeAttr("style");
+        }, 400);
+    }
+
+    function movingLeftFunc() {
+        //클래스를 다시 붙인다. 
+        $LookBookOnImg.prev().addClass("on").children("a").children("strong").fadeIn();
+        $LookBookOnImg.removeClass("on");
+
+        $LookBookImgList.children("li:last-child").prependTo($LookBookImgList);
+        $LookBookImgList.css({transitionDuration: "",left: "-33%"});
+
+        window.setTimeout(() => {$LookBookImgList.css({transitionDuration: "400ms",left: ""})}, 10)
+
+        //기존의 클래스는 제거한다. 
+        $LookBookOnImg.children("a").children("strong").fadeOut();
+    }
+
+    function resetVaviable() {
+        //필요한 on 변수를 다시 대입 시킨다. 
+        $LookBookOnImg = $LookBookImgList.children("li.on");
+        $LookBookOnStrong = $LookBookOnImg.children("a").children("strong");
+    }
 
     function prevTextShrink() {
         $sensualDesignTypo.removeAttr("style");

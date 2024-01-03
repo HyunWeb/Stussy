@@ -442,23 +442,16 @@ body {
   background-position: 20% 20%, 80% 90%, 23% 65%, 62% 89%, center, 34% 0%, 85% 62%, 75% 25%, 30% 90%, center;
 }
 #collaboPage > img {
+  transition-duration: 200ms;
   width: 100%;
   position: absolute;
-  left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  transform-origin: 50% 48%;
-  opacity: 0;
-}
-#collaboPage::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0);
+  transform-origin: 52% 48%;
 }
 #collaboPage > div:first-of-type {
+  display: none;
   transition-duration: 400ms;
   z-index: 1;
   position: absolute;
@@ -468,7 +461,6 @@ body {
   right: 0;
   background-color: rgba(255, 255, 255, 0.79);
   text-align: center;
-  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -509,6 +501,15 @@ body {
 #collaboPage > div:first-of-type > button:hover::before {
   transform: scaleX(1);
   transform-origin: right;
+}
+
+#blackoverlay {
+  transition-duration: 1s;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.36);
+  opacity: 1;
 }
 
 #main {
@@ -722,6 +723,7 @@ body {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  left: 0%;
   display: flex;
   width: 132%;
   justify-content: space-around;
@@ -735,8 +737,11 @@ body {
 }
 #seasonsLookBook > ul > li.on > a > strong {
   display: block;
+  opacity: 1;
 }
 #seasonsLookBook > ul > li > a {
+  transition-duration: 300ms;
+  transform: scale(1);
   display: block;
   position: relative;
 }
@@ -744,6 +749,8 @@ body {
   width: 400px;
 }
 #seasonsLookBook > ul > li > a > strong {
+  transition-duration: 300ms;
+  opacity: 0;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -800,11 +807,9 @@ body {
   position: absolute;
   z-index: 3;
   left: 100%;
-  left: 0%;
   width: 100vw;
   height: 100vh;
   background-color: #f1f1f1;
-  animation: pageChangeEffect 900ms 0.2s ease 1;
 }
 
 #collaboBrandPage > ul {

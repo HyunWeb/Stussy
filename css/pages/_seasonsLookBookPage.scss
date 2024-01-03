@@ -3,6 +3,7 @@
     > ul {
         position: relative;
         @include transform-center-Y;
+        left: 0%;
         display:flex;
         width: 132%;
         justify-content: space-around;
@@ -16,12 +17,15 @@
                     transform:scale(1.1);
                     > strong {
                         display: block;
+                        opacity: 1;
                     }
                 }
             }
 
             > a {
                 // overflow:hidden;
+                transition-duration: 300ms;
+                transform: scale(1);
                 display: block;
                 position: relative;
                 > img {
@@ -29,6 +33,8 @@
 
                 }
                 > strong {
+                    transition-duration: 300ms;
+                    opacity: 0;
                     position: absolute;
                     @include transform-center;
                     display: none;

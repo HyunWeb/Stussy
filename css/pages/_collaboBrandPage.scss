@@ -12,11 +12,11 @@
     position: absolute;
     z-index: 3;
     left: 100%;
-    left: 0%;
+    // left: 0%;
     width: 100vw;
     height: 100vh;
     background-color: $white;
-    animation: pageChangeEffect 900ms 0.2s ease 1;
+    // animation: pageChangeEffect 900ms 0.2s ease 1;
 }
 #collaboBrandPage {
     > ul {
