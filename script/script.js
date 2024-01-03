@@ -38,12 +38,11 @@ $(function () {
     const $collaboPageMainImg = $("#collaboPage > img:nth-of-type(1)");
     let collaboImgSize = 1
     let collaboImgScale = collaboImgSize * 1.2;
-
     //빈 요소<div>를 스크립트를 활용해 생성
     blackoverlay();
     const $blackoverlay = $("#blackoverlay");
 
-
+    // 스크롤 이벤트
     window.addEventListener("wheel", function (event) {
         event.preventDefault();
         console.log(pageIndex);
@@ -78,42 +77,60 @@ $(function () {
 
     function scrollDown(){
         //이미지가 최대크기고 페이지 인덱스가 0일때 페이지 인덱스를 1로 올린다. 
-        if(pageIndex == 0 || pageIndex == 1){
-            //타이틀 페이지 확대
-            titlePageUpscaleFunc();
-            if(pageIndex == 0 && imgScale >= 10){
-                pageIndex = 1;
-            }else if(pageIndex == 1 && !$sloganSource.is(":visible")) {
-                //슬로건 보여주기
-                showSlogan();
-            }else if($sloganSource.is(":visible") && pageIndex == 1){
-                pageIndex = 2;
+        if(pageIndex == 0){
+            scrollAction0();
+
+            function scrollAction0() {
+                titlePageUpscaleFunc();
+                if(pageIndex == 0 && imgScale >= 10){
+                    pageIndex = 1;
+                } 
             }
-        }else if(pageIndex == 2 && !parseInt($logoTitle.css("opacity"))) {
-            //다음 페이지 올라오기
-            secondPageUp();      
-        }else if(pageIndex == 2 && parseInt($logoTitle.css("opacity"))){
-            logoTitleScrollUp();
-        }else if(pageIndex == 3 && parseInt($logoWhitePage.css("left"))){
-            // logoListIndex = 1;
-            //페이지 인덱스가 3이되면 로고 페이지가 들어온다. 
-            logoPageIn();
-        }else if(pageIndex == 3 && !parseInt($logoWhitePage.css("left"))){
-            //스크롤 이벤트 조절
-            if(logopageControl == 0){
-                logopageControl = 1
-                changeLogoFunc();
-                changeImgFunc();
-                changeBackgroundFunc();
+        }else if(pageIndex == 1){
+            scrollAction1();
 
-                if(pageIndex == 3 && logoListIndex == 3){
-                    //마지막 페이지에서는 페이지의 인덱스를 높인다. 
-                    logoPageEnd();
-                    styleTitleUp();
-
-                    pageIndex = 4; 
+            function scrollAction1(){
+                if(pageIndex == 1 && !$sloganSource.is(":visible")) {
+                    showSlogan();
+                }else if($sloganSource.is(":visible") && pageIndex == 1){
+                    pageIndex = 2;
                 }
-                window.setTimeout(()=>{logopageControl = 0},500);
+            }
+        }else if(pageIndex == 2) {
+            scrollAction2();
+
+            function scrollAction2() {
+                if(!parseInt($logoTitle.css("opacity"))){
+                    //다음 페이지 올라오기
+                    secondPageUp();   
+                }else if(parseInt($logoTitle.css("opacity"))){
+                    logoTitleScrollUp();
+                }
+            }   
+        }else if(pageIndex == 3){
+            scrollAction3();
+
+            function scrollAction3(){
+                if(parseInt($logoWhitePage.css("left"))){
+                    logoPageIn();
+                }else if(!parseInt($logoWhitePage.css("left"))){
+                    //스크롤 이벤트 조절
+                    if(logopageControl == 0){
+                        logopageControl = 1
+                        changeLogoFunc();
+                        changeImgFunc();
+                        changeBackgroundFunc();
+
+                        if(pageIndex == 3 && logoListIndex == 3){
+                            //마지막 페이지에서는 페이지의 인덱스를 높인다. 
+                            logoPageEnd();
+                            styleTitleUp();
+
+                            pageIndex = 4; 
+                        }
+                        window.setTimeout(()=>{logopageControl = 0},500);
+                    }
+                }
             }
         }else if(pageIndex == 4 && $styleTitleH2.attr("style")){
             styleTitleDown();
@@ -155,10 +172,12 @@ $(function () {
             $collaboPageMainImg.css({transform: `translate(-50%, -50%) scale(${collaboImgSize})`});
             collaboImgScale = ++collaboImgSize * 1.2;
         }
+
+
     }
 
     function scrollUp(){
-        if(pageIndex <= 0){
+        if(pageIndex == 0){
             //인덱스 페이지가 0일때 타이틀 페이지 축소
             titlePageDownscaleFunc();
         }else if(pageIndex == 1){
