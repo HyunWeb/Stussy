@@ -442,7 +442,8 @@ body {
   background-position: 20% 20%, 80% 90%, 23% 65%, 62% 89%, center, 34% 0%, 85% 62%, 75% 25%, 30% 90%, center;
 }
 #collaboPage > img {
-  transition-duration: 200ms;
+  z-index: 1;
+  transition-duration: 500ms;
   width: 100%;
   position: absolute;
   top: 50%;
@@ -451,6 +452,7 @@ body {
   transform-origin: 52% 48%;
 }
 #collaboPage > div:first-of-type {
+  opacity: 0;
   display: none;
   transition-duration: 400ms;
   z-index: 1;
@@ -793,17 +795,18 @@ body {
   clip: rect(0, 0, 0, 0);
 }
 
-.changePage {
+#changePage {
+  transition-duration: 1s;
   position: absolute;
   width: 100vw;
   height: 100vh;
   background-color: #121212;
   z-index: 2;
   left: 100%;
-  animation: pageChangeEffect 1000ms ease 1;
 }
 
 #collaboBrandPage {
+  transition-duration: 900ms;
   position: absolute;
   z-index: 3;
   left: 100%;
@@ -818,7 +821,6 @@ body {
   height: 500%;
   transition-duration: 400ms;
   top: 0%;
-  top: -400%;
 }
 #collaboBrandPage > ul > li {
   height: 20%;
@@ -872,7 +874,6 @@ body {
 .brandTitleBox > div > strong {
   transition-duration: 400ms;
   position: relative;
-  top: 110%;
   top: 0%;
 }
 .brandTitleBox:nth-of-type(1) {

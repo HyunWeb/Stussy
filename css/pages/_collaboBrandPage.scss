@@ -1,14 +1,16 @@
-.changePage {
+#changePage {
+    transition-duration: 1s;
     position: absolute;
     width: 100vw;
     height: 100vh;
     background-color: $black;
     z-index: 2;
     left: 100%;
-    animation: pageChangeEffect 1000ms ease 1;
+    // animation: pageChangeEffect 1000ms ease 1;
 }
 
 #collaboBrandPage {
+    transition-duration: 900ms;
     position: absolute;
     z-index: 3;
     left: 100%;
@@ -25,7 +27,7 @@
         height: 500%;
         transition-duration: 400ms;
         top: 0%;
-        top: -400%;
+        // top: -400%;
 
         > li {
             height: 20%;
@@ -66,7 +68,7 @@
         > strong {
             transition-duration: 400ms;
             position:relative;
-            top: 110%;
+            // top: 110%;
             top: 0%;
         }
     }

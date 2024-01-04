@@ -1,4 +1,5 @@
 $(function () {
+    let windowHeight = $(window).height();
     let imgSize = 1;
     let imgScale = imgSize * 1.2;
     let pageIndex = 0;
@@ -35,25 +36,33 @@ $(function () {
     let $LookBookOnImg  = $LookBookImgList.children("li.on");
     let $LookBookOnStrong = $LookBookOnImg.children("a").children("strong");
     const $collaboPage = $("#collaboPage");
+    const $collaboPageChangeButton = $collaboPage.children("div:nth-of-type(1)").children("button");
+    const $collaboBrandPage = $("#collaboBrandPage");
+    const $collaboBrandList = $collaboBrandPage.children("ul");
+    let brandListIndex = 0;
     const $collaboPageMainImg = $("#collaboPage > img:nth-of-type(1)");
     let collaboImgSize = 1
     let collaboImgScale = collaboImgSize * 1.2;
+
     //빈 요소<div>를 스크립트를 활용해 생성
     blackoverlay();
     const $blackoverlay = $("#blackoverlay");
+    changePageBlock();
+    const $changePageBlock = $("#changePage");
+
     let scrollDownFuncArray = [
         scrollAction0, scrollAction1, scrollAction2, scrollAction3, scrollAction4, scrollAction5, 
-        scrollAction6, scrollAction7, scrollAction8
+        scrollAction6, scrollAction7, scrollAction8, scrollAction9
     ]
     let scrollUpFuncArray = [
         scrollUpAction0, scrollUpAction1, scrollUpAction2, scrollUpAction3, scrollUpAction4, scrollUpAction5, 
-        scrollUpAction6, scrollUpAction7, scrollUpAction8
+        scrollUpAction6, scrollUpAction7, scrollUpAction8, scrollUpAction9
     ]
 
     // 스크롤 이벤트
     window.addEventListener("wheel", function (event) {
         event.preventDefault();
-        console.log(pageIndex);
+        // console.log(pageIndex);
 
         if(event.deltaY > 0) {
             scrollDown();
@@ -79,7 +88,15 @@ $(function () {
         movingRight();
     });
 
+    // 콜라보 페이지 버튼
+    $collaboPageChangeButton.on("click", function() {
+        pageChangeFunc();
+        pageIndex = 9;
+    })
+
     // Function -----------------------------------------------------------------------
+
+   
     
     function scrollDown(){
         scrollDownFuncArray[pageIndex]();
@@ -87,6 +104,11 @@ $(function () {
 
     function scrollUp(){
         scrollUpFuncArray[pageIndex]();
+    }
+
+    function pageChangeFunc() {
+        $changePageBlock.css({left: 0});
+        window.setTimeout(() => {$collaboBrandPage.css({left: 0})}, 200);
     }
 
     function scrollUpAction0() {
@@ -152,7 +174,9 @@ $(function () {
     }
 
     function scrollUpAction7() {
-        $flexBox.css({marginTop: "0vh"})
+        if($flexBox.is(":animated"))return;
+
+        $flexBox.css({marginTop: "0"})
         $wideStyleContent.children("img:nth-child(2)").css({top: ""});
         $wideStyleContent.children("div").css({top: ""});
 
@@ -160,13 +184,49 @@ $(function () {
     }
 
     function scrollUpAction8() {
-        if(collaboImgSize <= 1){
-            collaboImgSize = 1;
-            $collaboPageMainImg.css({display: "block", opacity: 1});
+
+        if(collaboImgSize <= 1) {
+            $blackoverlay.fadeIn(500);
+            collaboImgScale = 1
+            $collaboPageMainImg.css({transform: `translate(-50%, -50%) scale(${collaboImgScale.toFixed(1)})`});
+
+            pageIndex = 7;
+            
+            $flexBox.animate({marginTop: `-${windowHeight}px`});
             return;
+        }else if(collaboImgSize <= 7){
+            if($collaboPage.is(":animated")) return;
+                if(collaboImgSize == 7){
+                $collaboPage.children("div:nth-of-type(1)").animate({opacity: "0"},
+                () => {$collaboPage.children("div:nth-of-type(1)").css({display: "none"})});
+                }
+            $collaboPageMainImg.fadeIn();
+
+            collaboImgScale = --collaboImgSize * 5;
+            $collaboPageMainImg.css({transform: `translate(-50%, -50%) scale(${collaboImgScale.toFixed(1)})`});
         }
-        collaboImgSize = --collaboImgSize
-        $collaboPageMainImg.css({transform: `translate(-50%, -50%) scale(${collaboImgSize})`});
+        
+    }
+
+    function scrollUpAction9() {
+        
+        
+        if(brandListIndex <= 0 && logopageControl == 0){
+            $collaboBrandPage.css({left: "100%"});
+            window.setTimeout(() => {$changePageBlock.css({left: "100%"})}, 200);
+            window.setTimeout(() => {pageIndex = 8;}, 400);
+            return;
+        }else if(brandListIndex <= 4 && logopageControl == 0){
+                logopageControl = 1
+
+                if(brandListIndex <= 0)return;
+                brandListIndex--;
+                $collaboBrandList.css({top: `-${brandListIndex}00%`})
+
+                window.setTimeout(() => {logopageControl = 0}, 500);
+        }
+        console.log(brandListIndex, logopageControl);
+        
     }
 
     function scrollAction0() {
@@ -176,7 +236,7 @@ $(function () {
         } 
     }
 
-    function scrollAction1(){
+    function scrollAction1() {
         if(pageIndex == 1 && !$sloganSource.is(":visible")) {
             showSlogan();
         }else if($sloganSource.is(":visible") && pageIndex == 1){
@@ -193,7 +253,7 @@ $(function () {
         }
     }  
 
-    function scrollAction3(){
+    function scrollAction3() {
         if(parseInt($logoWhitePage.css("left"))){
             logoPageIn();
         }else if(!parseInt($logoWhitePage.css("left"))){
@@ -216,7 +276,7 @@ $(function () {
         }
     }
 
-    function scrollAction4(){
+    function scrollAction4() {
         if($styleTitleH2.attr("style")){
             styleTitleDown();
             shrinkText();
@@ -225,7 +285,7 @@ $(function () {
         }
     }
 
-    function scrollAction5(){
+    function scrollAction5() {
         if($modelBackground.attr("style")){
             $flexBox.css({marginLeft: "-100%"});
 
@@ -237,36 +297,56 @@ $(function () {
         }
     }
 
-    function scrollAction6(){
-        $flexBox.css({marginTop: "-100vh"})
+    function scrollAction6() {
+        $flexBox.css({marginTop: `-${windowHeight}px`})
         $wideStyleContent.children("img:nth-child(2)").css({top: "10%"});
         $wideStyleContent.children("div").css({top: "35%"});
 
         window.setTimeout(()=>{pageIndex = 7},400);
     }
 
-    function scrollAction7(){
-        $flexBox.css({marginTop: "-200vh"});
+    function scrollAction7() {
+        $flexBox.css({marginTop: `-${windowHeight * 2}px`});
         window.setTimeout(()=>{ pageIndex = 8 },400);
     }
+        
 
-    function scrollAction8(){
-        if(collaboImgSize >= 1){
-            if(collaboImgSize <= 10){
-                $blackoverlay.css({opacity: "0"});
-                window.setTimeout(() => {
-                    $blackoverlay.css({display: "none"});
-                }, 400);
-            }else if(collaboImgSize >= 150){
-                $collaboPageMainImg.css({opacity: 0});
-                window.setTimeout(() => {
-                    $collaboPageMainImg.css({display: "none"});
-                }, 200);
-                return;
-            } 
+    function scrollAction8() {
+        if(collaboImgSize >= 7) {
 
-            $collaboPageMainImg.css({transform: `translate(-50%, -50%) scale(${collaboImgSize})`});
-            collaboImgScale = ++collaboImgSize * 1.2;
+            if($collaboPageMainImg.is(":animated") || $collaboPage.is(":animated")) return;
+            $collaboPageMainImg.fadeOut();
+
+            window.setTimeout(()=> {
+                $collaboPage.children("div:nth-of-type(1)").css({display: "flex"}).animate({opacity: "1"}).clearQueue();
+            }, 500)
+
+            pageChangeFunc();
+            pageIndex = 9;
+
+        }else if(collaboImgSize >= 1 && collaboImgSize <= 6){
+            if(collaboImgSize == 2){
+                $blackoverlay.fadeOut(500);
+            }
+
+            collaboImgScale = ++collaboImgSize * 5;
+
+            $collaboPageMainImg.css({transform: `translate(-50%, -50%) scale(${collaboImgScale.toFixed(1)})`});
+        }
+
+       
+    }
+    
+    function scrollAction9() {
+        console.log(brandListIndex);
+        if(logopageControl == 0){
+            logopageControl = 1
+            window.setTimeout(() => {logopageControl = 0}, 500);
+
+            if(brandListIndex >= 4) return;
+
+            brandListIndex++;
+            $collaboBrandList.css({top: `-${brandListIndex}00%`})
         }
     }
 
@@ -559,5 +639,9 @@ $(function () {
 
     function blackoverlay() {
         $("<div id='blackoverlay'></div>").appendTo($collaboPage);
+    }
+
+    function changePageBlock() {
+        $collaboBrandPage.before("<div id='changePage'></div>");
     }
 }); //document.onready

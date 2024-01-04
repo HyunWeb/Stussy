@@ -34,7 +34,8 @@
             center;
     }
     > img {
-        transition-duration: 200ms;
+        z-index: 1;
+        transition-duration: 500ms;
         width: 100%;
         position: absolute;
         top: 50%;
@@ -56,6 +57,7 @@
     //     // animation: collaboScaleOverlay 2s linear 1;
     // }
     > div:first-of-type {
+        opacity: 0;
         display: none;
         transition-duration: 400ms;
         z-index: 1;
