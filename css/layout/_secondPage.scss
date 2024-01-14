@@ -1,0 +1,48 @@
+#secondPage{
+    position: absolute;
+    top: 100%;
+    transition-duration: 500ms;
+    width: 100vw;
+    height: 100vh;
+    background: {
+        color: $black;
+        // color: $white;
+    }
+    overflow: hidden;
+}
+
+#logoWhitePage {
+    transition-duration: 600ms;
+    position: absolute;
+    left: -100%;
+    width: 70vw;
+    height: 100vh;
+    background: {
+        color: $white;
+        image: url("../img/logoBackgroundNumber1.png");
+        repeat: no-repeat;
+        position: 45% 95%;
+    }
+}
+
+#styleTitle {
+    width: 1000px; 
+    height: 90px; 
+    margin: 0 auto;
+    position: relative;
+    @include transform-center-Y;
+    overflow:hidden;
+    > h2 {
+        position: relative;
+        top: 0px;
+        top: 90px;
+        transition-duration: 400ms;
+    }
+}
+
+#sensualDesign {
+    display: flex;
+    flex-direction: row;    
+    position: absolute;
+    @include transform-center;
+}

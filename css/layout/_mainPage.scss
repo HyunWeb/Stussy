@@ -1,0 +1,56 @@
+body {
+    background-color: $white;
+    overflow: hidden;
+}
+
+#main {
+    height: 100vh;
+    margin: 0 auto; 
+    position:relative;  
+    overflow: hidden;
+}
+
+#overlaySlogan{
+    display: none;
+    position:absolute;
+    top: 0; 
+    left: 0;
+    bottom: 0; 
+    right: 0; 
+    background: {
+        color: #000000ad;
+    }
+}
+.sloganSource {
+    display: none;
+}
+
+// 오른쪽 페이지 왼쪽 페이지 일렬 배치 작업
+#flexBox {
+    transition-duration: 1s;
+    display:flex;
+    width: 200vw;
+    > div {
+        overflow: hidden;
+        width: 100vw;
+    }
+}
+
+#footer {
+    position: relative;
+    top: -2%;
+    font: {
+        size: 12px;
+        weight: 500;
+    }
+    border-top: 2px solid #d5d5d5;
+    padding-top: 20px; 
+    text-align: center;
+
+    > ul > a {
+        color: $black;
+        font-weight: 800;
+        text-decoration: underline;
+    }
+}
+

@@ -1,0 +1,52 @@
+#sensualDesign{
+    display: none;
+    // width: 80%;
+    justify-content: center;
+
+    & div:first-of-type {
+        position: relative;
+        // display: flex;
+        // justify-content: center;
+        width: 430px; 
+        // flex-basis: 480px;
+        height: 570px; 
+        background: {
+            image: url("../img/shrinkBackground.png");
+            repeat: no-repeat;
+            size: 380px; 
+            position: center;
+        }
+    }
+
+    & div:first-of-type > img{
+        position: absolute;
+        @include transform-center;
+    }
+    & div:first-of-type > img:nth-of-type(1){
+        width: 380px;
+        transition-duration: 1s;
+        // animation: imgShrink 0.5s 1s ease 1;
+    }
+    & div:first-of-type > img:nth-of-type(2){
+        width: 170px;
+    }
+
+> #sensualDesignTypo{
+    white-space: nowrap;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    > h3 {
+        transition-duration: 1s;
+        transform:  scale(314);
+        transform-origin: 36%;
+        // animation: textShrink 1s linear 1;
+    }
+    > p {
+        flex-basis: 160px;
+        display: flex;
+        align-items: center;
+
+    }
+}
+}

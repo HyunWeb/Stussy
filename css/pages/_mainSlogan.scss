@@ -1,0 +1,39 @@
+#main {
+    background: {
+        image: url("../img/streetView.png");
+        repeat: no-repeat;
+        size: cover;
+        position: center;
+    }
+
+    > img:nth-child(1){
+        width: 100%;
+        transition-duration: 200ms;
+        position: absolute;
+        @include transform-center;
+    }
+
+    > img:nth-child(2){
+        position: absolute;
+        transition-duration: 300ms;
+        left: 50%;
+        top: 52%;
+        transform: translate(-50%, -50%);
+        width: 45%;
+    }
+}
+
+#overlaySlogan{
+    > img {
+        width: 633px;
+        position: absolute;
+        @include transform-center-X;
+        top: 35%;
+    }
+    
+    > p {
+        position: absolute;
+        @include transform-center-X;
+        top: 42%;
+    }
+}

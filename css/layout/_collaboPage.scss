@@ -1,0 +1,110 @@
+#collaboPage {
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+    background: {
+        image: 
+            url("../img/collaboImg10.png"),
+            url("../img/collaboImg9.png"),
+            url("../img/collaboImg8.png"),
+            url("../img/collaboImg7.png"),
+            url("../img/collaboImg6.png"),
+            url("../img/collaboImg5.png"),
+            url("../img/collaboImg4.png"),
+            url("../img/collaboImg3.png"),
+            url("../img/collaboImg2.png"),
+            url("../img/collaboImg1.png");
+        repeat: no-repeat;
+        size: 
+            200px, 200px, 
+            200px, 300px, 
+            350px, 430px, 
+            400px, 500px, 
+            1000px, cover ;
+        position: 
+            20% 20%,
+            80% 90%,
+            23% 65%,
+            62% 89%,
+            center,
+            34% 0%,
+            85% 62%,
+            75% 25%,
+            30% 90%,
+            center;
+    }
+    > img {
+        z-index: 1;
+        transition-duration: 500ms;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        transform-origin: 52% 48%;
+        // animation: collaboScale 2s ease 1;
+        // opacity: 0;
+        // display:none;
+        
+    }
+    // &::after {
+    //     content: "";
+    //     display: block;
+    //     width: 100%;
+    //     height: 100%;
+    //     background-color: rgba(0 0 0 / 36%);
+    //     // display: none;
+    //     // animation: collaboScaleOverlay 2s linear 1;
+    // }
+    > div:first-of-type {
+        opacity: 0;
+        display: none;
+        transition-duration: 400ms;
+        z-index: 1;
+        position: absolute;
+        top: 0%; 
+        // top: 150%; 
+        left: 0; 
+        bottom: 0; 
+        right: 0; 
+        background-color: rgb(255 255 255 / 79%);
+        text-align: center;
+        // display: flex; 
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        > h3 {
+            margin-bottom: 30px; 
+        }
+
+        > button {
+            @include buttonDeleteDefaultOption;
+            @include buttonCustomDesign;
+            position: relative;
+
+            &::before {
+                @include buttonAnimation;
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+
+            &:hover {
+                color: $white;
+
+                 &::before {
+                    transform: scaleX(1);
+                    transform-origin: right;
+                }
+            }
+        }
+    }
+}
+#blackoverlay {
+    transition-duration: 1s;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.36);
+    opacity: 1;
+}

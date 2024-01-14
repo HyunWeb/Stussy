@@ -1,0 +1,215 @@
+// G마켓 산스 폰트 적용
+$Gmarket : "GmarketSans", sans-serif;
+
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.h3Title {
+    color: $black;
+    font: {
+        size: 50px;
+        weight: 900;
+    }
+    line-height: 1.2
+}
+
+.paragraph {
+    font: {
+        size: 20px; 
+        weight: 400;
+    }
+    line-height: 1.5;
+}
+
+body {
+    font-family:'Noto Sans KR', sans-serif;
+}
+
+#menuList > li {
+    > a {
+        color: $black;
+        text-decoration: none;
+        font: {
+            size: 20px;
+            weight: 500;
+        }
+    }
+}
+
+#overlaySlogan{
+    > p {
+        color: $white;
+        text-align: center;
+        line-height: 1.3;
+        font: {
+            size: 50px;
+            weight: bold;
+        }   
+
+        > span {
+            font: {
+                size: 25px; 
+                weight: 400;
+            }
+        }
+    }
+}
+
+#secondPage{
+    > h2{
+        color: $white;
+        font: {
+            size: 150px;
+            weight: 900;
+            family: $Gmarket
+        }
+    }
+}
+
+.logoDetail {
+    font-family: $Gmarket;
+
+    > h2{
+        font: {
+            weight: 900;
+            size: 60px; 
+        }    
+    }
+}
+
+.logoTextLeft{
+    > span {
+        font: {
+            size: 22px; 
+            weight: 400;
+        }
+    }    
+}
+
+.logoTextRight {
+    > p {
+        font-size: 23px; 
+        line-height: 1.3;
+    }
+
+    > a {
+        text-decoration: none;
+        color: $black;
+        font: {
+            size: 20px;
+            weight: bold;
+        }
+    }
+}
+
+#styleTitle > h2 {
+    color: $white;
+    text-align: center;
+ font: {
+    size: 70px;
+    weight: 900;
+ }   
+}
+
+#sensualDesignTypo {
+    & > h3 {
+        @extend .h3Title;
+    }
+
+    & > p{
+      @extend .paragraph;
+    }
+}
+
+#wideStylePage{
+    & > h3 {
+        @extend .h3Title;
+    }
+
+    & > p {
+        @extend .paragraph;
+    }
+}
+
+#seasonsLookBook > ul > li { 
+     > a {
+        text-decoration: none;
+        text-align: center;
+        color: #d63600;
+        font: {
+            size: 140px; 
+            weight: 900;
+        }
+        > strong {
+            mix-blend-mode: difference;
+            transition-duration: 300ms;
+        }
+    }
+    & > a:hover > strong {
+        transform: translate(-50%, -65%) scale(1.1);
+    }
+}
+
+#collaboPage{
+    > div:first-of-type {
+        > h3 {
+            @extend .h3Title;
+        }
+    
+        > p {
+            @extend .paragraph;
+        }
+
+        > button{
+            font: {
+                size: 18px; 
+                weight: 600;
+            }
+        }
+    }
+  
+}
+
+.brandTitleBox {
+    font-family: $Gmarket;
+    text-align: center;
+
+    > div:nth-of-type(1) > h3{
+        font : {
+            size: 80px;
+            weight: 700;
+        }
+        margin-bottom: 30px;
+    }
+    > div:nth-of-type(2) > strong{
+        font: {
+            size: 50px;
+            weight: 900;
+        }
+    }
+}
+#collaboBrandPage > button:nth-of-type(1) {
+    font: {
+        size: 18px; 
+        weight: 600;
+    }
+}
+
+#clothesCategory {
+    font: {
+        family: $Gmarket;
+        size: 30px;
+    }
+    line-height: $ClothLetterLine;
+    > ul > li > a:hover {
+        font: {
+            weight: 900;
+            size: 35px;
+        }
+    }
+}
+

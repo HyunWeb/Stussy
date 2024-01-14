@@ -1,0 +1,149 @@
+#changePage {
+    transition-duration: 1s;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: $black;
+    z-index: 2;
+    left: 100%;
+    // animation: pageChangeEffect 1000ms ease 1;
+}
+
+#collaboBrandPage {
+    transition-duration: 900ms;
+    position: absolute;
+    z-index: 3;
+    left: 100%;
+    // left: 0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: $white;
+    // animation: pageChangeEffect 900ms 0.2s ease 1;
+}
+#collaboBrandPage {
+    > ul {
+        position: absolute;
+        width: 100%;
+        height: 500%;
+        transition-duration: 300ms;
+        top: 0%;
+        // top: -400%;
+
+        > li {
+            height: 20%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    > button:nth-of-type(1) {
+        position: absolute;
+        @include transform-center-X;
+        top: 60%;
+        @include buttonDeleteDefaultOption;
+        @include buttonCustomDesign;
+
+        &::before {
+            @include buttonAnimation;
+            transform: scaleY(0);
+            transform-origin: top;
+        }
+
+        &:hover {
+            color: $white;
+
+             &::before {
+                transform: scaleY(1);
+                transform-origin: bottom;
+            }
+        }
+    }
+
+    > button:nth-of-type(2) {
+        > span{ @include buttonSpanClip; }
+        background: {
+            image: url("../img/backPageArrow.png");
+            size: 70px;
+            repeat: no-repeat;
+            color: transparent;
+            position: center;
+        }
+        width: 300px;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        border: none;
+        position: absolute;
+        // position: fixed;
+        top: 10%;
+        left: 0%;
+        cursor: pointer;
+        opacity: 0.5;
+        transition-duration: 400ms;
+
+        &:hover {
+            animation: buttonAni 500ms ease 1;
+            opacity: 1;
+        }
+    }
+
+}
+#collaboBrandPage > #pageOut.on{
+    animation: buttonAni 300ms ease 1;
+    opacity: 1;
+} 
+.brandTitleBox {
+    > div {
+        position:relative;
+        overflow:hidden;
+        > h3,
+        > strong {
+            transition-duration: 200ms;
+            position:relative;
+            top: 110%;
+            // top: 0%;
+        }
+    }
+
+    &:nth-of-type(1) {
+        background: {
+            image: url("../img/collaboImg0_2.png"), url("../img/collaboImg0_0.png"), url("../img/collaboImg0_1.png");
+            repeat: no-repeat;
+            size: 200px, 500px, 400px;
+            position: 65% 20%, 16%, 80% 57% ;
+        }
+    }
+    &:nth-of-type(2) {
+        background: {
+            image: url("../img/collaboImg1_2.png"), url("../img/collaboImg1_0.png"), url("../img/collaboImg1_1.png");
+            repeat: no-repeat;
+            size: 100px, 500px, 400px;
+            position: 15% 66%, 80% 65%, 18% 25% ;
+        }
+    }
+    &:nth-of-type(3) {
+        background: {
+            image: url("../img/collaboImg2_2.png"), url("../img/collaboImg2_0.png"), url("../img/collaboImg2_1.png");
+            repeat: no-repeat;
+            size: 200px, 450px, 470px;
+            position: 80% 25%, 80% 65%, 20% 30% ;
+        }
+    }
+    &:nth-of-type(4) {
+        background: {
+            image: url("../img/collaboImg3_2.png"), url("../img/collaboImg3_3.png"), url("../img/collaboImg3_0.png"), url("../img/collaboImg3_1.png");
+            repeat: no-repeat;
+            size: 250px, 450px, 600px, 500px;
+            position: 75% 50%, 25% 85%, 20% 30%, 80% 80%;
+        }
+    }
+    &:nth-of-type(5) {
+        background: {
+            image: url("../img/collaboImg4_2.png"), url("../img/collaboImg4_0.png"), url("../img/collaboImg4_1.png");
+            repeat: no-repeat;
+            size: 500px, 450px, 400px;
+            position: 20% 70%, 25% 35%, 80% 75%;
+        }
+    }
+}
