@@ -2,16 +2,9 @@
 
 > **의류 브랜드 스투시의 홈페이지를 역동적인 레이아웃으로 리뉴얼하여 더욱 몰입감 있는 사용자 경험을 제공합니다.**
 
-## 📌 기술 스택
-
-### 🎨 Frontend
-- **SCSS** - 스타일 최적화
-- **jQuery** - 이벤트 처리 및 DOM 조작
-- **CSS Transform & Animation** - UI/UX 개선
-
-### 🛠️ 개발 도구
-- **Visual Studio Code**
-- **Git & GitHub**
+## 🛠️ 사용한 기술 스택
+### 프론트엔드
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/sass-CC6699?style=for-the-badge&logo=sass&logoColor=white"> <img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white"> 
 
 ---
 
@@ -77,14 +70,6 @@
 
 ---
 
-
-
-## 📜 라이선스
-
-이 프로젝트는 **MIT License**를 따릅니다. 자유롭게 수정 및 배포할 수 있습니다.
-
----
-
 ## 📬 문의
-- **개발자:** [황종현](https://github.com/yourgithub)
-- **이메일:** your.email@example.com
+- **개발자:** [황종현](https://github.com/HyunWeb)
+- **이메일:** jonghyun1803@naver.com
