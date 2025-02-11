@@ -2,6 +2,9 @@
 
 > **의류 브랜드 스투시의 홈페이지를 역동적인 레이아웃으로 리뉴얼하여 더욱 몰입감 있는 사용자 경험을 제공합니다.**
 
+![stussyTest](https://github.com/user-attachments/assets/dc7b6fa1-9db6-41f0-b8a9-3bce4791c4ed)
+
+
 ## 🛠️ 사용한 기술 스택
 ### 프론트엔드
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/sass-CC6699?style=for-the-badge&logo=sass&logoColor=white"> <img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white"> 
